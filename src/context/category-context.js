@@ -1,17 +1,21 @@
 import axios from "axios";
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useReducer } from "react";
+import { categoryReducer } from "../reducer";
+import { categoryInitialValues } from "../utils";
 
 const CategoryContext = createContext(null);
 
 const CategoryProvider = ({ children }) => {
-  const [categories, setCategories] = useState([]);
+  const [state, dispatch] = useReducer(categoryReducer, categoryInitialValues);
 
   useEffect(() => {
+    dispatch({ type: "LOADER", payload: true });
     (async () => {
       try {
         const { data, status } = await axios.get("/api/categories");
+        dispatch({ type: "LOADER", payload: false });
         if (status === 200) {
-          setCategories(data.categories);
+          dispatch({ type: "CATEGORIES", payload: data.categories });
         }
       } catch (e) {
         console.error(e);
@@ -20,7 +24,7 @@ const CategoryProvider = ({ children }) => {
   }, []);
 
   return (
-    <CategoryContext.Provider value={{ categories }}>
+    <CategoryContext.Provider value={{ state }}>
       {children}
     </CategoryContext.Provider>
   );

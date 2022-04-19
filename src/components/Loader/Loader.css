@@ -4,9 +4,10 @@
   border: 5px solid #000;
   border-bottom-color: transparent;
   border-radius: 50%;
-  display: inline-block;
+  display: block;
   box-sizing: border-box;
-  animation: rotation 1s linear infinite;
+  animation: rotation 0.5s linear infinite;
+  margin: 2rem auto;
 }
 
 @keyframes rotation {
