@@ -1,0 +1,1 @@
+export { trumpCardObj } from "./trumpCardObj";

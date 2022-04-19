@@ -1,8 +1,7 @@
 import React from "react";
 import "./Home.css";
-import { Hero } from "../../components/Hero";
-import { trumpCardObj } from "../../utils/trumpCardObj";
-import { TrumpCard } from "../../components/TrumpCard";
+import { Hero, TrumpCard } from "../../components";
+import { trumpCardObj } from "../../utils";
 
 export const Home = () => {
   return (
