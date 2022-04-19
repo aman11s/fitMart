@@ -2,6 +2,7 @@ import React from "react";
 import "./Home.css";
 import { Hero } from "../../components/Hero";
 import { trumpCardObj } from "../../utils/trumpCardObj";
+import { TrumpCard } from "../../components/TrumpCard";
 
 export const Home = () => {
   return (
@@ -10,13 +11,7 @@ export const Home = () => {
       <h2 className="h2 mt-5 text-center">Why Choose Us?</h2>
       <div className="m-4 mb-6 trump-cards container-flex-justify-center">
         {trumpCardObj.map((data) => {
-          const { id, imgSrc, title, alt } = data;
-          return (
-            <div key={id} className="shadow trump-card p-2 radius-5">
-              <img className="img-responsive" src={imgSrc} alt={alt} />
-              <span className="text-center">{title}</span>
-            </div>
-          );
+          return <TrumpCard data={data} />;
         })}
       </div>
 
