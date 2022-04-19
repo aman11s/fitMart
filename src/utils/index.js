@@ -1,1 +1,1 @@
-export { trumpCardObj } from "./trumpCardObj";
+export { trumpCardObj } from "./trump-card-obj";
