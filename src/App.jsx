@@ -1,9 +1,14 @@
 import "./App.css";
+import { Footer } from "./components/Footer";
+import { Navbar } from "./components/Navbar";
+import { Home } from "./pages/Home/Home";
 
 function App() {
   return (
     <div className="App">
-      <h1>fitMart</h1>
+      <Navbar />
+      <Home />
+      <Footer />
     </div>
   );
 }
