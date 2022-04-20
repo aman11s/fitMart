@@ -1,10 +1,12 @@
-export const categoryReducer = (state, action) => {
-  switch (action.type) {
-    case "CATEGORIES":
-      return { ...state, categories: action.payload };
+import { CATEGORIES_ACTIONS } from "../utils/Actions/categoryActions";
 
-    case "LOADER":
-      return { ...state, loader: action.payload };
+export const categoryReducer = (state, { type, payload }) => {
+  switch (type) {
+    case CATEGORIES_ACTIONS.INITIALIZE_CATEGORIES:
+      return { ...state, categories: payload.categories };
+
+    case CATEGORIES_ACTIONS.SHOW_LOADER:
+      return { ...state, loader: payload.loader };
 
     default:
       return state;
