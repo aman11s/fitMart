@@ -1,0 +1,19 @@
+.trump-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(8rem, 1fr));
+  justify-items: center;
+  gap: 2rem;
+}
+
+.trump-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 200px;
+}
+
+@media screen and (max-width: 600px) {
+  .trump-card {
+    max-width: 130px;
+  }
+}
