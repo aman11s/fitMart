@@ -1,6 +1,6 @@
 import axios from "axios";
 import { createContext, useContext, useEffect, useReducer } from "react";
-import { CATEGORIES_ACTIONS } from "../utils/Actions/categoryActions";
+import { CATEGORIES_ACTIONS } from "../utils/Actions/categoty-actions";
 import { categoryReducer } from "../reducer";
 import { categoryInitialValues } from "../utils";
 

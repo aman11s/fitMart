@@ -1,8 +1,13 @@
+import { PRODUCTS_ACTIONS } from "../utils/Actions/product-actions";
+
 export const productReducer = (state, { type, payload }) => {
-  //   switch (type) {
-  //     case value:
-  //       break;
-  //     default:
-  //       break;
-  //   }
+  switch (type) {
+    case PRODUCTS_ACTIONS.INITIALIZE_PRODUCTS:
+      return { ...state, products: payload.products };
+
+    case PRODUCTS_ACTIONS.SHOW_LOADER:
+      return { ...state, productLoader: payload.productLoader };
+    default:
+      return state;
+  }
 };
