@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export const Navbar = () => {
   return (
@@ -6,9 +7,9 @@ export const Navbar = () => {
       <nav className="nav-bar shadow">
         <div className="container-flex-align-center short-width">
           <div className="left-nav">
-            <a className="h2" href="#">
+            <Link className="h2" to="/">
               <span className="primary-text-color">fit</span>Mart
-            </a>
+            </Link>
           </div>
 
           {/* search input */}
