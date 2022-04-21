@@ -12,14 +12,14 @@ const CategoryProvider = ({ children }) => {
   useEffect(() => {
     dispatch({
       type: CATEGORIES_ACTIONS.SHOW_LOADER,
-      payload: { loader: true },
+      payload: { categoryLoader: true },
     });
     (async () => {
       try {
         const { data, status } = await axios.get("/api/categories");
         dispatch({
           type: CATEGORIES_ACTIONS.SHOW_LOADER,
-          payload: { loader: false },
+          payload: { categoryLoader: false },
         });
         if (status === 200) {
           dispatch({

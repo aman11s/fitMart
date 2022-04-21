@@ -6,7 +6,7 @@ export const categoryReducer = (state, { type, payload }) => {
       return { ...state, categories: payload.categories };
 
     case CATEGORIES_ACTIONS.SHOW_LOADER:
-      return { ...state, loader: payload.loader };
+      return { ...state, categoryLoader: payload.categoryLoader };
 
     default:
       return state;
