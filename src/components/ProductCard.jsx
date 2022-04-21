@@ -1,30 +1,27 @@
 import React from "react";
 
-export const ProductCard = () => {
+export const ProductCard = ({ product }) => {
+  const { title, ratings, price, imgSrc, imgAlt } = product;
   return (
     <>
-      <div class="vertical-card auto-width">
-        <div class="card-header">
-          <div class="card-img-container">
-            <img
-              class="card-img"
-              src="/assets/products/whey-protein/ON-Whey-Protein-5-lb.webp"
-              alt="ON-Whey-Protein-5-lb"
-            />
-            <i class="card-wishlist-icon product-wishlist-icon bx bx-heart"></i>
+      <div className="vertical-card auto-width">
+        <div className="card-header">
+          <div className="card-img-container">
+            <img className="card-img" src={imgSrc} alt={imgAlt} />
+            <i className="card-wishlist-icon product-wishlist-icon bx bx-heart"></i>
           </div>
         </div>
-        <div class="card-body">
-          <div class="item-price">Rs. 6,999</div>
-          <div class="card-description">ON Whey Protein Powder</div>
+        <div className="card-body">
+          <div className="item-price">Rs. {price}</div>
+          <div className="card-description">{title}</div>
         </div>
-        <div class="card-footer">
-          <button class="btn card-btn primary-outline-btn primary-btn-text-icon">
-            <i class="btn-icon bx bxs-cart"></i>Add to cart
+        <div className="card-footer">
+          <button className="btn card-btn primary-outline-btn primary-btn-text-icon">
+            <i className="btn-icon bx bxs-cart"></i>Add to cart
           </button>
 
-          <button class="btn card-btn primary-solid-btn primary-btn-text-icon">
-            <i class="btn-icon bx bxs-bolt"></i>Buy Now
+          <button className="btn card-btn primary-solid-btn primary-btn-text-icon">
+            <i className="btn-icon bx bxs-bolt"></i>Buy Now
           </button>
         </div>
       </div>
