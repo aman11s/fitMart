@@ -1,3 +1,9 @@
-.close-transition {
-  transform: translateX(-100%);
+.grid-minmax-card {
+  grid-template-columns: repeat(auto-fit, minmax(13rem, 2fr));
+}
+
+@media screen and (max-width: 350px) {
+  .grid-minmax-card {
+    grid-template-columns: repeat(auto-fit, minmax(12rem, 2fr));
+  }
 }

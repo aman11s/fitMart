@@ -5,11 +5,7 @@ export const Sidebar = ({ showSidebar, setShowSidebar }) => {
   return (
     <>
       <aside className="aside-container px-4 aside-height">
-        <div
-          className={`filter-container ${
-            showSidebar ? "open-transition" : "close-transition"
-          }`}
-        >
+        <div className={`filter-container ${showSidebar && "open-transition"}`}>
           <button
             className="close-btn bx bx-x"
             onClick={() => setShowSidebar(false)}

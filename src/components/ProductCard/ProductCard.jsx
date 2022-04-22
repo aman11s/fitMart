@@ -1,4 +1,5 @@
 import React from "react";
+import "./ProductCard.css";
 
 export const ProductCard = ({ product }) => {
   const { title, ratings, price, imgSrc, imgAlt } = product;
@@ -16,10 +17,10 @@ export const ProductCard = ({ product }) => {
           <div className="card-description">{title}</div>
         </div>
         <div className="card-footer">
-          <button className="btn card-btn primary-outline-btn primary-btn-text-icon">
-            <i className="btn-icon bx bxs-cart"></i>Add to cart
-          </button>
-
+          <span className="container-flex-align-center rating mb-2">
+            <i class="bx bxs-star"></i>
+            {ratings} / 5
+          </span>
           <button className="btn card-btn primary-solid-btn primary-btn-text-icon">
             <i className="btn-icon bx bxs-bolt"></i>Buy Now
           </button>

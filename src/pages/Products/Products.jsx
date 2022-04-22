@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { Loader, ProductCard, Sidebar } from "../../components";
 import { useProducts } from "../../context";
 import { PRODUCTS_ACTIONS } from "../../utils/Actions/product-actions";
+import "./Products.css";
 
 export const Products = () => {
   const { state, dispatch } = useProducts();
