@@ -1,6 +1,6 @@
 import axios from "axios";
 import React from "react";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Loader, ProductCard, Sidebar } from "../../components";
 import { useProducts } from "../../context";
 import { PRODUCTS_ACTIONS } from "../../utils/Actions/product-actions";
@@ -8,6 +8,7 @@ import { PRODUCTS_ACTIONS } from "../../utils/Actions/product-actions";
 export const Products = () => {
   const { state, dispatch } = useProducts();
   const { products, productLoader } = state;
+  const [showSidebar, setShowSidebar] = useState(false);
 
   useEffect(() => {
     (async () => {
@@ -36,7 +37,7 @@ export const Products = () => {
   return (
     <>
       <div className="grid-page-layout">
-        <Sidebar />
+        <Sidebar showSidebar={showSidebar} setShowSidebar={setShowSidebar} />
         <main className="main-container">
           <h4 className="h4 mt-3 mx-3">Showing All Products</h4>
           {productLoader && <Loader />}
@@ -47,6 +48,18 @@ export const Products = () => {
           </div>
         </main>
       </div>
+      <button
+        onClick={() => setShowSidebar(true)}
+        className="small-text p-2 filter-btn"
+      >
+        Add filter & sort
+      </button>
+      {showSidebar && (
+        <div
+          onClick={() => setShowSidebar(false)}
+          className="drop-shadow"
+        ></div>
+      )}
     </>
   );
 };
