@@ -12,28 +12,30 @@ export const Products = () => {
   const [showSidebar, setShowSidebar] = useState(false);
 
   useEffect(() => {
-    (async () => {
-      dispatch({
-        type: PRODUCTS_ACTIONS.SHOW_LOADER,
-        payload: { productLoader: true },
-      });
-      try {
-        const { data, status } = await axios.get("/api/products");
+    if (!products.length) {
+      (async () => {
         dispatch({
           type: PRODUCTS_ACTIONS.SHOW_LOADER,
-          payload: { productLoader: false },
+          payload: { productLoader: true },
         });
-        if (status === 200) {
+        try {
+          const { data, status } = await axios.get("/api/products");
           dispatch({
-            type: PRODUCTS_ACTIONS.INITIALIZE_PRODUCTS,
-            payload: { products: data.products },
+            type: PRODUCTS_ACTIONS.SHOW_LOADER,
+            payload: { productLoader: false },
           });
+          if (status === 200) {
+            dispatch({
+              type: PRODUCTS_ACTIONS.INITIALIZE_PRODUCTS,
+              payload: { products: data.products },
+            });
+          }
+        } catch (e) {
+          console.error(e);
         }
-      } catch (e) {
-        console.error(e);
-      }
-    })();
-  }, [dispatch]);
+      })();
+    }
+  }, [dispatch, products]);
 
   return (
     <>
