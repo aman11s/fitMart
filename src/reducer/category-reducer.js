@@ -1,4 +1,4 @@
-import { CATEGORIES_ACTIONS } from "../utils/Actions/categoryActions";
+import { CATEGORIES_ACTIONS } from "../utils/Actions/categoty-actions";
 
 export const categoryReducer = (state, { type, payload }) => {
   switch (type) {
@@ -6,7 +6,7 @@ export const categoryReducer = (state, { type, payload }) => {
       return { ...state, categories: payload.categories };
 
     case CATEGORIES_ACTIONS.SHOW_LOADER:
-      return { ...state, loader: payload.loader };
+      return { ...state, categoryLoader: payload.categoryLoader };
 
     default:
       return state;

@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export const Hero = () => {
   return (
@@ -7,9 +8,9 @@ export const Hero = () => {
         <div className="overlay">
           <h1>GET FIT</h1>
           <p>Your one stop fitness solution</p>
-          <a href="#category" className="pt-1">
+          <Link className="pt-1" to="/products">
             <button className="btn primary-solid-btn">Shop now</button>
-          </a>
+          </Link>
         </div>
         <img
           className="img-responsive"

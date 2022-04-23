@@ -1,6 +1,6 @@
 import axios from "axios";
 import { createContext, useContext, useEffect, useReducer } from "react";
-import { CATEGORIES_ACTIONS } from "../utils/Actions/categoryActions";
+import { CATEGORIES_ACTIONS } from "../utils/Actions/categoty-actions";
 import { categoryReducer } from "../reducer";
 import { categoryInitialValues } from "../utils";
 
@@ -12,14 +12,14 @@ const CategoryProvider = ({ children }) => {
   useEffect(() => {
     dispatch({
       type: CATEGORIES_ACTIONS.SHOW_LOADER,
-      payload: { loader: true },
+      payload: { categoryLoader: true },
     });
     (async () => {
       try {
         const { data, status } = await axios.get("/api/categories");
         dispatch({
           type: CATEGORIES_ACTIONS.SHOW_LOADER,
-          payload: { loader: false },
+          payload: { categoryLoader: false },
         });
         if (status === 200) {
           dispatch({

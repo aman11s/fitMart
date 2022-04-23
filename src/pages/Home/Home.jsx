@@ -6,7 +6,7 @@ import { useCategory } from "../../context";
 
 export const Home = () => {
   const { state } = useCategory();
-  const { categories, loader } = state;
+  const { categories, categoryLoader } = state;
 
   return (
     <>
@@ -20,7 +20,7 @@ export const Home = () => {
       <h2 id="category" className="h2 mt-5 text-center">
         Featured Categories
       </h2>
-      {loader && <Loader />}
+      {categoryLoader && <Loader />}
       <div className="category m-4">
         {categories.map((category) => (
           <CategoryCard key={category._id} category={category} />
