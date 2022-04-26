@@ -18,7 +18,7 @@ export const ProductCard = ({ product }) => {
         </div>
         <div className="card-footer">
           <span className="container-flex-align-center rating mb-2">
-            <i class="bx bxs-star"></i>
+            <i className="bx bxs-star"></i>
             {ratings} / 5
           </span>
           <button className="btn card-btn primary-solid-btn primary-btn-text-icon">
