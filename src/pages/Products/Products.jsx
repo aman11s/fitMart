@@ -3,6 +3,8 @@ import React from "react";
 import { useEffect, useState } from "react";
 import { Loader, ProductCard, Sidebar } from "../../components";
 import { useProducts } from "../../context";
+import { useFilter } from "../../context/filter-context";
+import { filterBySort } from "../../utils";
 import { PRODUCTS_ACTIONS } from "../../utils/Actions/product-actions";
 import "./Products.css";
 
@@ -10,6 +12,11 @@ export const Products = () => {
   const { state, dispatch } = useProducts();
   const { products, productLoader } = state;
   const [showSidebar, setShowSidebar] = useState(false);
+  const {
+    state: { sortBy },
+  } = useFilter();
+
+  const filteredProducts = filterBySort(products, sortBy);
 
   useEffect(() => {
     if (!products.length) {
@@ -45,7 +52,7 @@ export const Products = () => {
           <h4 className="h4 mt-3 mx-3">Showing All Products</h4>
           {productLoader && <Loader />}
           <div className="grid-minmax-card p-2">
-            {products.map((product) => {
+            {filteredProducts.map((product) => {
               return <ProductCard key={product._id} product={product} />;
             })}
           </div>
