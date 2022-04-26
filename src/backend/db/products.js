@@ -39,7 +39,7 @@ export const products = [
   {
     _id: uuid(),
     title: "MuscleBlaze Super Gainer XXL Weight Gainer",
-    ratings: "4.3",
+    ratings: "3.3",
     price: "4,299",
     imgSrc:
       "https://fitmart-screens.netlify.app/assets/products/gainer/mb-gainer.webp",
@@ -50,7 +50,7 @@ export const products = [
   {
     _id: uuid(),
     title: "Nutrilite Multivitamin",
-    ratings: "4.6",
+    ratings: "3.6",
     price: "2,399",
     imgSrc:
       "https://fitmart-screens.netlify.app/assets/products/multi-vitamins/amway-muti-vit.jpeg",
@@ -70,7 +70,7 @@ export const products = [
   {
     _id: uuid(),
     title: "Dymatize mass gainer",
-    ratings: "4.3",
+    ratings: "2.9",
     price: "999",
     imgSrc:
       "https://fitmart-screens.netlify.app/assets/products/gainer/dymatize-gainer.webp",
@@ -100,7 +100,7 @@ export const products = [
   {
     _id: uuid(),
     title: "MuscleTech MassTech Extreme",
-    ratings: "3.9",
+    ratings: "1.9",
     price: "4,699",
     imgSrc:
       "https://fitmart-screens.netlify.app/assets/products/gainer/muscletech-gainer.webp",
@@ -110,7 +110,7 @@ export const products = [
   {
     _id: uuid(),
     title: "ON Serious Mass Weight Gainer",
-    ratings: "4.1",
+    ratings: "3.9",
     price: "1,699",
     imgSrc:
       "https://fitmart-screens.netlify.app/assets/products/gainer/on-gainer.webp",
@@ -120,7 +120,7 @@ export const products = [
   {
     _id: uuid(),
     title: "GNC Mega Men Multivitamin",
-    ratings: "3.5",
+    ratings: "2.5",
     price: "2,399",
     imgSrc:
       "https://fitmart-screens.netlify.app/assets/products/multi-vitamins/gnc-mega-men.webp",
@@ -150,7 +150,7 @@ export const products = [
   {
     _id: uuid(),
     title: "GNC Pro creatine monohydrate",
-    ratings: "3.9",
+    ratings: "1.9",
     price: "1,299",
     imgSrc:
       "https://fitmart-screens.netlify.app/assets/products/creatine/gnc-creatine.webp",
