@@ -1,7 +1,23 @@
 import React from "react";
+import { useReducer } from "react";
 import "./Sidebar.css";
+import { filterReducer } from "../../reducer/filter-reducer";
+import { FILTER_ACITONS } from "../../utils/Actions/filter-actions";
+import { filterInitialValues } from "../../utils/Initial Values";
+import { filterBySort } from "../../utils";
+import { useProducts } from "../../context";
 
 export const Sidebar = ({ showSidebar, setShowSidebar }) => {
+  const [state, dispatch] = useReducer(filterReducer, filterInitialValues);
+  const { sortBy } = state;
+  const {
+    state: { products },
+  } = useProducts();
+
+  const filteredProducts = filterBySort(products, sortBy);
+
+  console.log(filteredProducts);
+
   return (
     <>
       <aside className="aside-container px-4 aside-height">
@@ -74,8 +90,20 @@ export const Sidebar = ({ showSidebar, setShowSidebar }) => {
           <div className="filter-section">
             <h5 className="h5 mb-2 pt-5">Sort by</h5>
             <label className="my-1" htmlFor="price-low-to-high">
-              <input type="radio" name="sort" id="price-low-to-high" /> Price -
-              Low to High
+              <input
+                onChange={() =>
+                  dispatch({
+                    type: FILTER_ACITONS.SORT_BY,
+                    payload: { sortBy: "LOW-TO-HIGH" },
+                  })
+                }
+                type="radio"
+                name="sort"
+                // value="LOW-TO-HIGH"
+                id="price-low-to-high"
+                checked={sortBy === "LOW-TO-HIGH"}
+              />{" "}
+              Price - Low to High
             </label>
             <label className="my-1" htmlFor="price-high-to-low">
               <input type="radio" name="sort" id="price-high-to-low" /> Price -
