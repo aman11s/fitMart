@@ -1,6 +1,6 @@
 import { createContext, useReducer, useContext } from "react";
 import { filterReducer } from "../reducer";
-import { filterInitialValues } from "../utils/Initial Values";
+import { filterInitialValues } from "../utils/initialValues";
 
 const FilterContext = createContext(null);
 

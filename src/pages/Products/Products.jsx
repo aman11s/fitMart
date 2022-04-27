@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { Loader, ProductCard, Sidebar } from "../../components";
 import { useProducts } from "../../context";
 import { useFilter } from "../../context/filter-context";
-import { filterBySort } from "../../utils";
+import { filterByCategories, filterByRatings, filterBySort } from "../../utils";
 import { PRODUCTS_ACTIONS } from "../../utils/Actions/product-actions";
 import "./Products.css";
 
@@ -13,10 +13,13 @@ export const Products = () => {
   const { products, productLoader } = state;
   const [showSidebar, setShowSidebar] = useState(false);
   const {
-    state: { sortBy },
+    state: { sortBy, ratings },
   } = useFilter();
 
-  const filteredProducts = filterBySort(products, sortBy);
+  const filteredBySort = filterBySort(products, sortBy);
+  const filteredByRatings = filterByRatings(filteredBySort, ratings);
+  const filteredProducts = filterByCategories(filteredByRatings, ratings);
+  // console.log(filteredProducts);
 
   useEffect(() => {
     if (!products.length) {
