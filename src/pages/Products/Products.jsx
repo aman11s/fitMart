@@ -13,12 +13,12 @@ export const Products = () => {
   const { products, productLoader } = state;
   const [showSidebar, setShowSidebar] = useState(false);
   const {
-    state: { sortBy, ratings },
+    state: { sortBy, ratings, categories },
   } = useFilter();
 
   const filteredBySort = filterBySort(products, sortBy);
   const filteredByRatings = filterByRatings(filteredBySort, ratings);
-  const filteredProducts = filterByCategories(filteredByRatings, ratings);
+  const filteredProducts = filterByCategories(filteredByRatings, categories);
   // console.log(filteredProducts);
 
   useEffect(() => {

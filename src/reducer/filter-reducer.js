@@ -5,6 +5,19 @@ export const filterReducer = (state, { type, payload }) => {
     case FILTER_ACITONS.SORT_BY:
       return { ...state, sortBy: payload.sortBy };
 
+    case FILTER_ACITONS.RATINGS:
+      return { ...state, ratings: payload.rating };
+
+    case FILTER_ACITONS.CATEGORY:
+      return state.categories.includes(payload.category)
+        ? {
+            ...state,
+            categories: state.categories.filter(
+              (category) => category !== payload.category
+            ),
+          }
+        : { ...state, categories: state.categories.concat(payload.category) };
+
     default:
       return state;
   }
