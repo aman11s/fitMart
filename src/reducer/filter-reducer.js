@@ -1,14 +1,14 @@
-import { FILTER_ACITONS } from "../utils/Actions/filter-actions";
+import { FILTER_ACTIONS } from "../utils/Actions/filter-actions";
 
 export const filterReducer = (state, { type, payload }) => {
   switch (type) {
-    case FILTER_ACITONS.SORT_BY:
+    case FILTER_ACTIONS.SORT_BY:
       return { ...state, sortBy: payload.sortBy };
 
-    case FILTER_ACITONS.RATINGS:
+    case FILTER_ACTIONS.RATINGS:
       return { ...state, ratings: payload.rating };
 
-    case FILTER_ACITONS.CATEGORY:
+    case FILTER_ACTIONS.CATEGORY:
       return state.categories.includes(payload.category)
         ? {
             ...state,
@@ -17,6 +17,9 @@ export const filterReducer = (state, { type, payload }) => {
             ),
           }
         : { ...state, categories: state.categories.concat(payload.category) };
+
+    case FILTER_ACTIONS.PRICE_RANGE:
+      return { ...state, priceRange: payload.priceRange };
 
     default:
       return state;

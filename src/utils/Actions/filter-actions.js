@@ -1,5 +1,6 @@
-export const FILTER_ACITONS = {
+export const FILTER_ACTIONS = {
   SORT_BY: "SORT_BY",
   RATINGS: "RATINGS",
   CATEGORY: "CATEGORY",
+  PRICE_RANGE: "PRICE_RANGE",
 };

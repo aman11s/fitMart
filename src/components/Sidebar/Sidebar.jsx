@@ -1,6 +1,11 @@
 import React from "react";
 import "./Sidebar.css";
-import { SortFilter, RatingsFilter, CategoryFilter } from "../Filters";
+import {
+  SortFilter,
+  RatingsFilter,
+  CategoryFilter,
+  PriceRangeFilter,
+} from "../Filters";
 
 export const Sidebar = ({ showSidebar, setShowSidebar }) => {
   return (
@@ -16,19 +21,7 @@ export const Sidebar = ({ showSidebar, setShowSidebar }) => {
             <button className="btn secondary-solid-btn">Clear</button>
           </div>
 
-          <h5 className="h5 pt-5">Price</h5>
-          <div className="pt-2 space-between">
-            <span>100</span>
-            <span>5000</span>
-            <span>10000</span>
-          </div>
-          <input
-            type="range"
-            className="slider"
-            min="100"
-            max="10000"
-            // value="7000"
-          />
+          <PriceRangeFilter />
 
           <CategoryFilter />
 

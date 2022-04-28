@@ -1,6 +1,6 @@
 import React from "react";
 import { useFilter } from "../../context";
-import { FILTER_ACITONS } from "../../utils/Actions";
+import { FILTER_ACTIONS } from "../../utils/Actions";
 
 export const RatingsFilter = () => {
   const {
@@ -16,7 +16,7 @@ export const RatingsFilter = () => {
           <input
             onChange={() =>
               dispatch({
-                type: FILTER_ACITONS.RATINGS,
+                type: FILTER_ACTIONS.RATINGS,
                 payload: { rating: "4-AND-ABOVE" },
               })
             }
@@ -31,7 +31,7 @@ export const RatingsFilter = () => {
           <input
             onChange={() =>
               dispatch({
-                type: FILTER_ACITONS.RATINGS,
+                type: FILTER_ACTIONS.RATINGS,
                 payload: { rating: "3-AND-ABOVE" },
               })
             }
@@ -46,7 +46,7 @@ export const RatingsFilter = () => {
           <input
             onChange={() =>
               dispatch({
-                type: FILTER_ACITONS.RATINGS,
+                type: FILTER_ACTIONS.RATINGS,
                 payload: { rating: "2-AND-ABOVE" },
               })
             }
@@ -61,7 +61,7 @@ export const RatingsFilter = () => {
           <input
             onChange={() =>
               dispatch({
-                type: FILTER_ACITONS.RATINGS,
+                type: FILTER_ACTIONS.RATINGS,
                 payload: { rating: "1-AND-ABOVE" },
               })
             }

@@ -1,6 +1,6 @@
 import React from "react";
 import { useFilter } from "../../context";
-import { FILTER_ACITONS } from "../../utils/Actions";
+import { FILTER_ACTIONS } from "../../utils/Actions";
 
 export const SortFilter = () => {
   const {
@@ -15,7 +15,7 @@ export const SortFilter = () => {
           <input
             onChange={() =>
               dispatch({
-                type: FILTER_ACITONS.SORT_BY,
+                type: FILTER_ACTIONS.SORT_BY,
                 payload: { sortBy: "LOW-TO-HIGH" },
               })
             }
@@ -30,7 +30,7 @@ export const SortFilter = () => {
           <input
             onChange={() =>
               dispatch({
-                type: FILTER_ACITONS.SORT_BY,
+                type: FILTER_ACTIONS.SORT_BY,
                 payload: { sortBy: "HIGH-TO-LOW" },
               })
             }

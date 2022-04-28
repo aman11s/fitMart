@@ -1,7 +1,7 @@
 import React from "react";
 import { useFilter } from "../../context";
 import { category } from "../../utils";
-import { FILTER_ACITONS } from "../../utils/Actions";
+import { FILTER_ACTIONS } from "../../utils/Actions";
 
 export const CategoryFilter = () => {
   const {
@@ -19,7 +19,7 @@ export const CategoryFilter = () => {
               <input
                 onChange={(e) =>
                   dispatch({
-                    type: FILTER_ACITONS.CATEGORY,
+                    type: FILTER_ACTIONS.CATEGORY,
                     payload: { category: e.target.value },
                   })
                 }
