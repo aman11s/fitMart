@@ -6,8 +6,17 @@ import {
   CategoryFilter,
   PriceRangeFilter,
 } from "../Filters";
+import { useFilter, useProducts } from "../../context";
+import { FILTER_ACTIONS } from "../../utils/Actions";
+import { getMinMaxPrice } from "../../utils";
 
 export const Sidebar = ({ showSidebar, setShowSidebar }) => {
+  const { dispatch } = useFilter();
+  const {
+    state: { products },
+  } = useProducts();
+  const { maxPrice } = getMinMaxPrice(products);
+
   return (
     <>
       <aside className="aside-container px-4 aside-height">
@@ -18,7 +27,17 @@ export const Sidebar = ({ showSidebar, setShowSidebar }) => {
           ></button>
           <div className="mt-5 space-between">
             <h5 className="h5">Filter</h5>
-            <button className="btn secondary-solid-btn">Clear</button>
+            <button
+              onClick={() =>
+                dispatch({
+                  type: FILTER_ACTIONS.CLEAR_FILTER,
+                  payload: { priceRange: maxPrice },
+                })
+              }
+              className="btn secondary-solid-btn"
+            >
+              Clear
+            </button>
           </div>
 
           <PriceRangeFilter />

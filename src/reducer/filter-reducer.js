@@ -1,4 +1,5 @@
 import { FILTER_ACTIONS } from "../utils/Actions/filter-actions";
+import { filterInitialValues } from "../utils/initialValues";
 
 export const filterReducer = (state, { type, payload }) => {
   switch (type) {
@@ -20,6 +21,9 @@ export const filterReducer = (state, { type, payload }) => {
 
     case FILTER_ACTIONS.PRICE_RANGE:
       return { ...state, priceRange: payload.priceRange };
+
+    case FILTER_ACTIONS.CLEAR_FILTER:
+      return { ...filterInitialValues, priceRange: payload.priceRange };
 
     default:
       return state;
