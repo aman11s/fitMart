@@ -14,7 +14,7 @@ export const products = [
     imgSrc:
       "https://fitmart-screens.netlify.app/assets/products/whey-protein/ON-Whey-Protein-5-lb.webp",
     imgAlt: "ON-Whey-Protein-5-lb",
-    categoryName: "Whey Protein",
+    categoryName: "protein",
   },
   {
     _id: uuid(),
@@ -24,7 +24,7 @@ export const products = [
     imgSrc:
       "https://fitmart-screens.netlify.app/assets/products/whey-protein/dymatize-whey-protein.webp",
     imgAlt: "dymatize-whey-protein",
-    categoryName: "Whey Protein",
+    categoryName: "protein",
   },
   {
     _id: uuid(),
@@ -34,7 +34,7 @@ export const products = [
     imgSrc:
       "https://fitmart-screens.netlify.app/assets/products/creatine/dymatize-creatine.webp",
     imgAlt: "dymatize-creatine",
-    categoryName: "Creatine",
+    categoryName: "creatine",
   },
   {
     _id: uuid(),
@@ -44,7 +44,7 @@ export const products = [
     imgSrc:
       "https://fitmart-screens.netlify.app/assets/products/gainer/mb-gainer.webp",
     imgAlt: "mb-gainer",
-    categoryName: "Gainer",
+    categoryName: "gainer",
   },
 
   {
@@ -55,7 +55,7 @@ export const products = [
     imgSrc:
       "https://fitmart-screens.netlify.app/assets/products/multi-vitamins/amway-muti-vit.jpeg",
     imgAlt: "amway-muti-vit",
-    categoryName: "Multivitamins",
+    categoryName: "multivitamin",
   },
   {
     _id: uuid(),
@@ -65,7 +65,7 @@ export const products = [
     imgSrc:
       "https://fitmart-screens.netlify.app/assets/products/multi-vitamins/mb-fish-oil.webp",
     imgAlt: "mb-fish-oil",
-    categoryName: "Multivitamins",
+    categoryName: "multivitamin",
   },
   {
     _id: uuid(),
@@ -75,7 +75,7 @@ export const products = [
     imgSrc:
       "https://fitmart-screens.netlify.app/assets/products/gainer/dymatize-gainer.webp",
     imgAlt: "dymatize-gainer",
-    categoryName: "Gainer",
+    categoryName: "gainer",
   },
   {
     _id: uuid(),
@@ -85,7 +85,7 @@ export const products = [
     imgSrc:
       "https://fitmart-screens.netlify.app/assets/products/whey-protein/myprotein-whey-protein.webp",
     imgAlt: "myprotein-whey-protein",
-    categoryName: "Whey Protein",
+    categoryName: "protein",
   },
   {
     _id: uuid(),
@@ -95,7 +95,7 @@ export const products = [
     imgSrc:
       "https://fitmart-screens.netlify.app/assets/products/creatine/mb-creatine.webp",
     imgAlt: "mb-creatine",
-    categoryName: "Creatine",
+    categoryName: "creatine",
   },
   {
     _id: uuid(),
@@ -105,7 +105,7 @@ export const products = [
     imgSrc:
       "https://fitmart-screens.netlify.app/assets/products/gainer/muscletech-gainer.webp",
     imgAlt: "muscletech-gainer",
-    categoryName: "Gainer",
+    categoryName: "gainer",
   },
   {
     _id: uuid(),
@@ -115,7 +115,7 @@ export const products = [
     imgSrc:
       "https://fitmart-screens.netlify.app/assets/products/gainer/on-gainer.webp",
     imgAlt: "on-gainer",
-    categoryName: "Gainer",
+    categoryName: "gainer",
   },
   {
     _id: uuid(),
@@ -125,7 +125,7 @@ export const products = [
     imgSrc:
       "https://fitmart-screens.netlify.app/assets/products/multi-vitamins/gnc-mega-men.webp",
     imgAlt: "gnc-mega-men",
-    categoryName: "Multivitamins",
+    categoryName: "multivitamin",
   },
   {
     _id: uuid(),
@@ -135,7 +135,7 @@ export const products = [
     imgSrc:
       "https://fitmart-screens.netlify.app/assets/products/creatine/on-creatine.webp",
     imgAlt: "on-creatine",
-    categoryName: "Creatine",
+    categoryName: "creatine",
   },
   {
     _id: uuid(),
@@ -145,7 +145,7 @@ export const products = [
     imgSrc:
       "https://fitmart-screens.netlify.app/assets/products/whey-protein/muscletech-whey-protein.jpeg",
     imgAlt: "muscletech-whey-protein",
-    categoryName: "Whey Protein",
+    categoryName: "protein",
   },
   {
     _id: uuid(),
@@ -155,7 +155,7 @@ export const products = [
     imgSrc:
       "https://fitmart-screens.netlify.app/assets/products/creatine/gnc-creatine.webp",
     imgAlt: "gnc-creatine",
-    categoryName: "Creatine",
+    categoryName: "creatine",
   },
   {
     _id: uuid(),
@@ -165,6 +165,6 @@ export const products = [
     imgSrc:
       "https://fitmart-screens.netlify.app/assets/products/multi-vitamins/mb-multi-vit.webp",
     imgAlt: "mb-multi-vit",
-    categoryName: "Multivitamin",
+    categoryName: "multivitamin",
   },
 ];
