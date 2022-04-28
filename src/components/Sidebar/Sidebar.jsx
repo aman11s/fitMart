@@ -1,8 +1,6 @@
 import React from "react";
 import "./Sidebar.css";
-import { SortFilter } from "../SortFilter/SortFilter";
-import { RatingsFilter } from "../RatingsFilter/RatingsFilter";
-import { CategoryFilter } from "../CategoryFilter/CategoryFilter";
+import { SortFilter, RatingsFilter, CategoryFilter } from "../Filters";
 
 export const Sidebar = ({ showSidebar, setShowSidebar }) => {
   return (
