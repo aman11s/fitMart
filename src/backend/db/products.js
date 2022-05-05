@@ -14,7 +14,7 @@ export const products = [
     imgSrc:
       "https://fitmart-screens.netlify.app/assets/products/whey-protein/ON-Whey-Protein-5-lb.webp",
     imgAlt: "ON-Whey-Protein-5-lb",
-    categoryName: "Whey Protein",
+    categoryName: "protein",
   },
   {
     _id: uuid(),
@@ -24,7 +24,7 @@ export const products = [
     imgSrc:
       "https://fitmart-screens.netlify.app/assets/products/whey-protein/dymatize-whey-protein.webp",
     imgAlt: "dymatize-whey-protein",
-    categoryName: "Whey Protein",
+    categoryName: "protein",
   },
   {
     _id: uuid(),
@@ -34,28 +34,28 @@ export const products = [
     imgSrc:
       "https://fitmart-screens.netlify.app/assets/products/creatine/dymatize-creatine.webp",
     imgAlt: "dymatize-creatine",
-    categoryName: "Creatine",
+    categoryName: "creatine",
   },
   {
     _id: uuid(),
     title: "MuscleBlaze Super Gainer XXL Weight Gainer",
-    ratings: "4.3",
+    ratings: "3.3",
     price: "4,299",
     imgSrc:
       "https://fitmart-screens.netlify.app/assets/products/gainer/mb-gainer.webp",
     imgAlt: "mb-gainer",
-    categoryName: "Gainer",
+    categoryName: "gainer",
   },
 
   {
     _id: uuid(),
     title: "Nutrilite Multivitamin",
-    ratings: "4.6",
+    ratings: "3.6",
     price: "2,399",
     imgSrc:
       "https://fitmart-screens.netlify.app/assets/products/multi-vitamins/amway-muti-vit.jpeg",
     imgAlt: "amway-muti-vit",
-    categoryName: "Multivitamins",
+    categoryName: "multivitamin",
   },
   {
     _id: uuid(),
@@ -65,17 +65,17 @@ export const products = [
     imgSrc:
       "https://fitmart-screens.netlify.app/assets/products/multi-vitamins/mb-fish-oil.webp",
     imgAlt: "mb-fish-oil",
-    categoryName: "Multivitamins",
+    categoryName: "multivitamin",
   },
   {
     _id: uuid(),
     title: "Dymatize mass gainer",
-    ratings: "4.3",
+    ratings: "2.9",
     price: "999",
     imgSrc:
       "https://fitmart-screens.netlify.app/assets/products/gainer/dymatize-gainer.webp",
     imgAlt: "dymatize-gainer",
-    categoryName: "Gainer",
+    categoryName: "gainer",
   },
   {
     _id: uuid(),
@@ -85,7 +85,7 @@ export const products = [
     imgSrc:
       "https://fitmart-screens.netlify.app/assets/products/whey-protein/myprotein-whey-protein.webp",
     imgAlt: "myprotein-whey-protein",
-    categoryName: "Whey Protein",
+    categoryName: "protein",
   },
   {
     _id: uuid(),
@@ -95,37 +95,37 @@ export const products = [
     imgSrc:
       "https://fitmart-screens.netlify.app/assets/products/creatine/mb-creatine.webp",
     imgAlt: "mb-creatine",
-    categoryName: "Creatine",
+    categoryName: "creatine",
   },
   {
     _id: uuid(),
     title: "MuscleTech MassTech Extreme",
-    ratings: "3.9",
+    ratings: "1.9",
     price: "4,699",
     imgSrc:
       "https://fitmart-screens.netlify.app/assets/products/gainer/muscletech-gainer.webp",
     imgAlt: "muscletech-gainer",
-    categoryName: "Gainer",
+    categoryName: "gainer",
   },
   {
     _id: uuid(),
     title: "ON Serious Mass Weight Gainer",
-    ratings: "4.1",
+    ratings: "3.9",
     price: "1,699",
     imgSrc:
       "https://fitmart-screens.netlify.app/assets/products/gainer/on-gainer.webp",
     imgAlt: "on-gainer",
-    categoryName: "Gainer",
+    categoryName: "gainer",
   },
   {
     _id: uuid(),
     title: "GNC Mega Men Multivitamin",
-    ratings: "3.5",
+    ratings: "2.5",
     price: "2,399",
     imgSrc:
       "https://fitmart-screens.netlify.app/assets/products/multi-vitamins/gnc-mega-men.webp",
     imgAlt: "gnc-mega-men",
-    categoryName: "Multivitamins",
+    categoryName: "multivitamin",
   },
   {
     _id: uuid(),
@@ -135,7 +135,7 @@ export const products = [
     imgSrc:
       "https://fitmart-screens.netlify.app/assets/products/creatine/on-creatine.webp",
     imgAlt: "on-creatine",
-    categoryName: "Creatine",
+    categoryName: "creatine",
   },
   {
     _id: uuid(),
@@ -145,17 +145,17 @@ export const products = [
     imgSrc:
       "https://fitmart-screens.netlify.app/assets/products/whey-protein/muscletech-whey-protein.jpeg",
     imgAlt: "muscletech-whey-protein",
-    categoryName: "Whey Protein",
+    categoryName: "protein",
   },
   {
     _id: uuid(),
     title: "GNC Pro creatine monohydrate",
-    ratings: "3.9",
+    ratings: "1.9",
     price: "1,299",
     imgSrc:
       "https://fitmart-screens.netlify.app/assets/products/creatine/gnc-creatine.webp",
     imgAlt: "gnc-creatine",
-    categoryName: "Creatine",
+    categoryName: "creatine",
   },
   {
     _id: uuid(),
@@ -165,6 +165,6 @@ export const products = [
     imgSrc:
       "https://fitmart-screens.netlify.app/assets/products/multi-vitamins/mb-multi-vit.webp",
     imgAlt: "mb-multi-vit",
-    categoryName: "Multivitamin",
+    categoryName: "multivitamin",
   },
 ];

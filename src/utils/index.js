@@ -1,3 +1,9 @@
 export { trumpCardObj } from "./trump-card-obj";
-export { categoryInitialValues } from "./Initial Values/category-initial-values";
-export { productInitialValues } from "./Initial Values/products-initial-values";
+export { categoryInitialValues } from "./initialValues/category-initial-values";
+export { productInitialValues } from "./initialValues/products-initial-values";
+export { filterBySort } from "./filter-by-sort";
+export { filterByRatings } from "./filter-by-ratings";
+export { filterByCategories } from "./filter-by-categories";
+export { category } from "./category";
+export { getMinMaxPrice } from "./getMinMaxPrice";
+export { filterByPriceRange } from "./filter-by-price-range";

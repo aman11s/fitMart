@@ -3,13 +3,36 @@ import React from "react";
 import { useEffect, useState } from "react";
 import { Loader, ProductCard, Sidebar } from "../../components";
 import { useProducts } from "../../context";
+import { useFilter } from "../../context/filter-context";
+import {
+  filterByCategories,
+  filterByPriceRange,
+  filterByRatings,
+  filterBySort,
+  getMinMaxPrice,
+} from "../../utils";
+import { FILTER_ACTIONS } from "../../utils/Actions";
 import { PRODUCTS_ACTIONS } from "../../utils/Actions/product-actions";
 import "./Products.css";
 
 export const Products = () => {
-  const { state, dispatch } = useProducts();
-  const { products, productLoader } = state;
+  const {
+    state: { products, productLoader },
+    dispatch,
+  } = useProducts();
   const [showSidebar, setShowSidebar] = useState(false);
+  const {
+    state: { sortBy, ratings, categories, priceRange },
+    dispatch: filterDispatch,
+  } = useFilter();
+
+  const filteredBySort = filterBySort(products, sortBy);
+  const filteredByRatings = filterByRatings(filteredBySort, ratings);
+  const filteredByCategories = filterByCategories(
+    filteredByRatings,
+    categories
+  );
+  const filteredProducts = filterByPriceRange(filteredByCategories, priceRange);
 
   useEffect(() => {
     if (!products.length) {
@@ -25,9 +48,14 @@ export const Products = () => {
             payload: { productLoader: false },
           });
           if (status === 200) {
+            const { minPrice, maxPrice } = getMinMaxPrice(data.products);
             dispatch({
               type: PRODUCTS_ACTIONS.INITIALIZE_PRODUCTS,
-              payload: { products: data.products },
+              payload: { products: data.products, minPrice, maxPrice },
+            });
+            filterDispatch({
+              type: FILTER_ACTIONS.PRICE_RANGE,
+              payload: { priceRange: maxPrice },
             });
           }
         } catch (e) {
@@ -35,7 +63,7 @@ export const Products = () => {
         }
       })();
     }
-  }, [dispatch, products]);
+  }, [dispatch, products, filterDispatch]);
 
   return (
     <>
@@ -45,7 +73,7 @@ export const Products = () => {
           <h4 className="h4 mt-3 mx-3">Showing All Products</h4>
           {productLoader && <Loader />}
           <div className="grid-minmax-card p-2">
-            {products.map((product) => {
+            {filteredProducts.map((product) => {
               return <ProductCard key={product._id} product={product} />;
             })}
           </div>
