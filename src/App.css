@@ -1,1 +1,5 @@
 @import url("https://fitmart-screens.netlify.app/CSS/main.css");
+
+.primary-link {
+  cursor: pointer;
+}

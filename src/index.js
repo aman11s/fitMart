@@ -1,11 +1,14 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
-import { CategoryProvider } from "./context";
-import { ProductProvider } from "./context/products-context";
+import {
+  AuthProvider,
+  CategoryProvider,
+  ProductProvider,
+  FilterProvider,
+} from "./context";
 import { makeServer } from "./server";
 import { BrowserRouter } from "react-router-dom";
-import { FilterProvider } from "./context/filter-context";
 
 // Call make Server
 makeServer();
@@ -13,13 +16,15 @@ makeServer();
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
-      <CategoryProvider>
-        <FilterProvider>
-          <ProductProvider>
-            <App />
-          </ProductProvider>
-        </FilterProvider>
-      </CategoryProvider>
+      <AuthProvider>
+        <CategoryProvider>
+          <FilterProvider>
+            <ProductProvider>
+              <App />
+            </ProductProvider>
+          </FilterProvider>
+        </CategoryProvider>
+      </AuthProvider>
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById("root")
