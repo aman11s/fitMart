@@ -49,13 +49,13 @@ export const Navbar = () => {
             </li>
 
             <li>
-              <a
-                href="/pages/cart.html"
+              <Link
+                to="/cart"
                 className="nav-pills badge-container inline-block"
               >
                 <i className="badge-container-icon bx bx-cart"></i>
                 <div className="icon-badge-number dnd">3</div>
-              </a>
+              </Link>
             </li>
           </ul>
         </div>
