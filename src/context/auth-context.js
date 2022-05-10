@@ -7,8 +7,6 @@ const AuthProvider = ({ children }) => {
     JSON.parse(localStorage.getItem("userData")) || {}
   );
 
-  //   console.log(userData);
-
   useEffect(() => {
     localStorage.setItem("userData", JSON.stringify(userData));
   }, [userData]);
