@@ -1,6 +1,6 @@
 import React from "react";
 import "./Login.css";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
 import { v4 as uuid } from "uuid";
@@ -40,6 +40,9 @@ export const Login = () => {
 
   const { email, password } = formData;
   const { setUserData } = useAuth();
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location?.state?.from?.pathname || "/";
 
   const inputChangeHandler = (e) => {
     setFormData((prevData) => ({
@@ -63,8 +66,9 @@ export const Login = () => {
         password,
       });
       if (status === 200) {
-        setUserData({ token: data.encodedToken, user: data.foundUser });
         toast.success("Successfully logged in!");
+        setUserData({ token: data.encodedToken, user: data.foundUser });
+        navigate(from, { replace: true });
       }
     } catch (error) {
       console.error(error);
@@ -97,7 +101,7 @@ export const Login = () => {
             );
           })}
 
-          <div className="container-flex mt-2">
+          <div className="container-flex my-2">
             <label htmlFor="remember-checkbox">
               <input
                 onChange={toggleHandler}

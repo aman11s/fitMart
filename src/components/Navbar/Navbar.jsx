@@ -8,8 +8,6 @@ export const Navbar = () => {
     userData: { token: isLoggedin },
   } = useAuth();
 
-  // console.log(isLoggedin);
-
   return (
     <>
       <nav className="nav-bar shadow">
@@ -30,11 +28,11 @@ export const Navbar = () => {
           <ul className="right-nav">
             <li>
               {isLoggedin ? (
-                <Link to={"/profile"} className="nav-pills">
+                <Link to="/profile" className="nav-pills">
                   <i className="badge-container-icon bx bx-user"></i>
                 </Link>
               ) : (
-                <Link className="btn primary-solid-btn" to="/login">
+                <Link to="/login" className="btn primary-solid-btn">
                   Login
                 </Link>
               )}
