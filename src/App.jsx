@@ -1,6 +1,6 @@
 import "./App.css";
 import { Footer, Navbar, RequiresAuth } from "./components";
-import { Home, Products, Signup, Login, Profile } from "./pages";
+import { Home, Products, Signup, Login, Profile, Wishlist } from "./pages";
 import { Routes, Route } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
 
@@ -22,6 +22,14 @@ function App() {
           element={
             <RequiresAuth>
               <Profile />
+            </RequiresAuth>
+          }
+        />
+        <Route
+          path="/wishlist"
+          element={
+            <RequiresAuth>
+              <Wishlist />
             </RequiresAuth>
           }
         />
