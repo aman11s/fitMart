@@ -1,9 +1,9 @@
-export { CategoryCard } from "./CategoryCard";
-export { Footer } from "./Footer";
-export { Hero } from "./Hero";
+export { CategoryCard } from "./CategoryCard/CategoryCard";
+export { Footer } from "./Footer/Footer";
+export { Hero } from "./Hero/Hero";
 export { Navbar } from "./Navbar/Navbar";
-export { TrumpCard } from "./TrumpCard";
+export { TrumpCard } from "./TrumpCard/TrumpCard";
 export { Loader } from "./Loader/Loader";
 export { ProductCard } from "./ProductCard/ProductCard";
 export { Sidebar } from "./Sidebar/Sidebar";
-export { RequiresAuth } from "./RequiresAuth";
+export { RequiresAuth } from "./RequiresAuth/RequiresAuth";
