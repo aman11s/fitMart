@@ -39,13 +39,14 @@ export const Navbar = () => {
             </li>
 
             <li>
-              <a
+              {/* <a
                 href="/pages/wishlist.html"
                 className="nav-pills badge-container inline-block"
               >
                 <i className="badge-container-icon bx bx-heart"></i>
                 <span className="icon-badge-number dnd">5</span>
-              </a>
+              </a> */}
+              <Link></Link>
             </li>
 
             <li>
