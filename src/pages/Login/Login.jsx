@@ -2,21 +2,19 @@ import React from "react";
 import "./Login.css";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useState } from "react";
-import axios from "axios";
-import { v4 as uuid } from "uuid";
 import { useAuth } from "../../context";
-import toast from "react-hot-toast";
+import { loginHandler } from "../../services";
 
 const formDetails = [
   {
-    id: uuid(),
+    id: 1,
     label: "Email",
     name: "email",
     type: "email",
   },
 
   {
-    id: uuid(),
+    id: 2,
     label: "Password",
     name: "password",
     type: "password",
@@ -58,28 +56,13 @@ export const Login = () => {
     }));
   };
 
-  const loginHandler = async (e) => {
-    e.preventDefault();
-    try {
-      const { status, data } = await axios.post("/api/auth/login", {
-        email,
-        password,
-      });
-      if (status === 200) {
-        toast.success("Successfully logged in!");
-        setUserData({ token: data.encodedToken, user: data.foundUser });
-        navigate(from, { replace: true });
-      }
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
   return (
     <>
       <main className="main-center login-main mt-2">
         <form
-          onSubmit={loginHandler}
+          onSubmit={(e) =>
+            loginHandler({ e, email, password, setUserData, navigate, from })
+          }
           className="authenticate-form p-5 radius-5 shadow"
         >
           <h2 className="h2 mb-4 text-center">Login</h2>
@@ -108,6 +91,7 @@ export const Login = () => {
                 type="checkbox"
                 id="remember-checkbox"
                 placeholder="Enter your password"
+                name="rememberMe"
                 checked={formData.rememberMe}
               />
               <span> Remember me</span>
