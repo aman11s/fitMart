@@ -1,7 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useAuth } from "../../context";
+import "./Navbar.css";
 
 export const Navbar = () => {
+  const {
+    userData: { token: isLoggedin },
+  } = useAuth();
+
   return (
     <>
       <nav className="nav-bar shadow">
@@ -21,29 +27,35 @@ export const Navbar = () => {
 
           <ul className="right-nav">
             <li>
-              <a href="/pages/login.html" className="nav-pills">
-                <button className="btn primary-solid-btn">Login</button>
-              </a>
+              {isLoggedin ? (
+                <Link to="/profile" className="nav-pills">
+                  <i className="badge-container-icon bx bx-user"></i>
+                </Link>
+              ) : (
+                <Link to="/login" className="btn primary-solid-btn">
+                  Login
+                </Link>
+              )}
             </li>
 
             <li>
-              <a
-                href="/pages/wishlist.html"
+              <Link
+                to="/wishlist"
                 className="nav-pills badge-container inline-block"
               >
                 <i className="badge-container-icon bx bx-heart"></i>
                 <span className="icon-badge-number dnd">5</span>
-              </a>
+              </Link>
             </li>
 
             <li>
-              <a
-                href="/pages/cart.html"
+              <Link
+                to="/cart"
                 className="nav-pills badge-container inline-block"
               >
                 <i className="badge-container-icon bx bx-cart"></i>
                 <div className="icon-badge-number dnd">3</div>
-              </a>
+              </Link>
             </li>
           </ul>
         </div>

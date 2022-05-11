@@ -16,4 +16,4 @@ const FilterProvider = ({ children }) => {
 
 const useFilter = () => useContext(FilterContext);
 
-export { useFilter, FilterProvider };
+export { FilterProvider, useFilter };
