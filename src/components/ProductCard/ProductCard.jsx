@@ -1,15 +1,29 @@
 import React from "react";
+import { useAuth, useWishlist } from "../../context";
+import { addWishlistHandler } from "../../services";
 import "./ProductCard.css";
 
 export const ProductCard = ({ product }) => {
   const { title, ratings, price, imgSrc, imgAlt } = product;
+
+  const {
+    userData: { token },
+  } = useAuth();
+
+  const { wishlistDispatch } = useWishlist();
+
   return (
     <>
       <div className="vertical-card auto-width">
         <div className="card-header">
           <div className="card-img-container">
             <img className="card-img" src={imgSrc} alt={imgAlt} />
-            <i className="card-wishlist-icon product-wishlist-icon bx bx-heart"></i>
+            <span
+              onClick={() =>
+                addWishlistHandler({ token, product, wishlistDispatch })
+              }
+              className="card-wishlist-icon product-wishlist-icon bx bx-heart"
+            ></span>
           </div>
         </div>
         <div className="card-body">
