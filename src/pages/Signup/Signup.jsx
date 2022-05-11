@@ -1,56 +1,99 @@
 import React from "react";
-import { v4 as uuid } from "uuid";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { singupHandler } from "../../services";
+
+const initialFormData = {
+  firstName: "",
+  lastName: "",
+  email: "",
+  password: "",
+  confirmPassword: "",
+  termsAndConditions: false,
+};
 
 export const Signup = () => {
   const formDetails = [
     {
-      id: uuid(),
+      id: 1,
       label: "First Name",
-      name: "first name",
+      name: "firstName",
       type: "text",
+      placeholder: "first name",
     },
 
     {
-      id: uuid(),
+      id: 2,
       label: "Last Name",
-      name: "last name",
+      name: "lastName",
       type: "text",
+      placeholder: "last name",
     },
 
     {
-      id: uuid(),
+      id: 3,
       label: "Email",
       name: "email",
       type: "email",
+      placeholder: "email",
     },
 
     {
-      id: uuid(),
+      id: 4,
       label: "Password",
       name: "password",
       type: "password",
+      placeholder: "password",
     },
 
     {
-      id: uuid(),
+      id: 5,
       label: "Confirm Password",
-      name: "confirm password",
+      name: "confirmPassword",
       type: "password",
+      placeholder: "confirm password",
     },
   ];
+
+  const [formData, setFormData] = useState(initialFormData);
+
+  const { password, confirmPassword } = formData;
+  const navigate = useNavigate();
+
+  const inputChangeHandler = (e) => {
+    setFormData((prevData) => ({
+      ...prevData,
+      [e.target.name]: e.target.value,
+    }));
+  };
+
+  const toggleHandler = (e) => {
+    setFormData((prevData) => ({
+      ...prevData,
+      [e.target.name]: e.target.checked,
+    }));
+  };
+
   return (
     <>
       <main className="main-center m-4">
-        <form className="authenticate-form p-5 radius-5 shadow">
+        <form
+          onSubmit={(e) =>
+            singupHandler({ e, password, confirmPassword, formData, navigate })
+          }
+          className="authenticate-form p-5 radius-5 shadow"
+        >
           <h2 className="h2 mb-4 text-center">Signup</h2>
-          {formDetails.map(({ id, label, name, type }) => {
+          {formDetails.map(({ id, label, name, type, placeholder }) => {
             return (
               <label key={id}>
                 {label} :
                 <input
+                  onChange={inputChangeHandler}
                   type={type}
-                  placeholder={`Enter your ${name}`}
+                  name={name}
+                  value={formData[name]}
+                  placeholder={`Enter your ${placeholder}`}
                   className="input-box input-default"
                   required
                 />
@@ -59,7 +102,13 @@ export const Signup = () => {
           })}
 
           <label className="mt-2">
-            <input type="checkbox" />
+            <input
+              onChange={toggleHandler}
+              type="checkbox"
+              name="termsAndConditions"
+              checked={formData.termsAndConditions}
+              required
+            />
             <span> I accept all Terms & Conditions</span>
           </label>
           <button className="btn mt-3 primary-solid-btn">
