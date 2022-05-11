@@ -2,7 +2,7 @@ import axios from "axios";
 import { createContext, useContext, useEffect, useReducer } from "react";
 import { CATEGORIES_ACTIONS } from "../utils/Actions/categoty-actions";
 import { categoryReducer } from "../reducer";
-import { categoryInitialValues } from "../utils";
+import { categoryInitialValues } from "../utils/initialValues";
 
 const CategoryContext = createContext(null);
 
