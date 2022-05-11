@@ -1,5 +1,4 @@
 import React from "react";
-import "./Home.css";
 import { CategoryCard, Hero, Loader, TrumpCard } from "../../components";
 import { trumpCardObj } from "../../utils";
 import { useCategory } from "../../context";

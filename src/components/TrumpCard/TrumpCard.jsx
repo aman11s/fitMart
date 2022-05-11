@@ -1,4 +1,5 @@
 import React from "react";
+import "./TrumpCard.css";
 
 export const TrumpCard = ({ data }) => {
   const { imgSrc, alt, title } = data;
