@@ -1,2 +1,2 @@
 export { loginHandler, singupHandler } from "./auth-services";
-export { addWishlistHandler } from "./wishlist-service";
+export { addWishlistHandler, removerWishlistHandler } from "./wishlist-service";

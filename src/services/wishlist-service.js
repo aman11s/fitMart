@@ -17,10 +17,40 @@ export const addWishlistHandler = async ({
         data: { product },
       });
       if (status === 201) {
-        toast.success("Added to wishlist");
+        toast.success("Added to Wishlist");
         wishlistDispatch({
           type: WISHLIST_ACTIONS.ADD_TO_WISHLIST,
-          payload: { wishlist: data.wishlist },
+          payload: { add_wishlist: data.wishlist },
+        });
+      }
+    } catch (e) {
+      console.error(e);
+    }
+  } else {
+    navigate("/login");
+  }
+};
+
+export const removerWishlistHandler = async ({
+  token,
+  product,
+  wishlist,
+  wishlistDispatch,
+  navigate,
+}) => {
+  if (token) {
+    try {
+      const { status, data } = await axios({
+        method: "DELETE",
+        url: `/api/user/wishlist/${product._id}`,
+        headers: { authorization: token },
+        data: { wishlist: wishlist },
+      });
+      if (status === 200) {
+        toast.error("Removed from Wishlist");
+        wishlistDispatch({
+          type: WISHLIST_ACTIONS.REMOVE_FROM_WISHLIST,
+          payload: { remove_wishlist: data.wishlist },
         });
       }
     } catch (e) {

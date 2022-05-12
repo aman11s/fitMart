@@ -1,7 +1,8 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth, useWishlist } from "../../context";
-import { addWishlistHandler } from "../../services";
+import { addWishlistHandler, removerWishlistHandler } from "../../services";
+import { isAlreadyInWishlist } from "../../utils";
 import "./ProductCard.css";
 
 export const ProductCard = ({ product }) => {
@@ -11,8 +12,13 @@ export const ProductCard = ({ product }) => {
     userData: { token },
   } = useAuth();
 
-  const { wishlistDispatch } = useWishlist();
+  const {
+    wishlistState: { wishlist },
+    wishlistDispatch,
+  } = useWishlist();
   const navigate = useNavigate();
+
+  const inWishlist = isAlreadyInWishlist(wishlist, product);
 
   return (
     <>
@@ -22,14 +28,24 @@ export const ProductCard = ({ product }) => {
             <img className="card-img" src={imgSrc} alt={imgAlt} />
             <span
               onClick={() =>
-                addWishlistHandler({
-                  token,
-                  product,
-                  wishlistDispatch,
-                  navigate,
-                })
+                inWishlist
+                  ? removerWishlistHandler({
+                      token,
+                      product,
+                      wishlist,
+                      wishlistDispatch,
+                      navigate,
+                    })
+                  : addWishlistHandler({
+                      token,
+                      product,
+                      wishlistDispatch,
+                      navigate,
+                    })
               }
-              className="card-wishlist-icon product-wishlist-icon bx bx-heart"
+              className={`card-wishlist-icon product-wishlist-icon bx ${
+                inWishlist ? "bxs-heart" : "bx-heart"
+              }`}
             ></span>
           </div>
         </div>
