@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { useAuth, useWishlist } from "../../context";
 import { addWishlistHandler } from "../../services";
 import "./ProductCard.css";
@@ -11,6 +12,7 @@ export const ProductCard = ({ product }) => {
   } = useAuth();
 
   const { wishlistDispatch } = useWishlist();
+  const navigate = useNavigate();
 
   return (
     <>
@@ -20,7 +22,12 @@ export const ProductCard = ({ product }) => {
             <img className="card-img" src={imgSrc} alt={imgAlt} />
             <span
               onClick={() =>
-                addWishlistHandler({ token, product, wishlistDispatch })
+                addWishlistHandler({
+                  token,
+                  product,
+                  wishlistDispatch,
+                  navigate,
+                })
               }
               className="card-wishlist-icon product-wishlist-icon bx bx-heart"
             ></span>

@@ -1,4 +1,4 @@
-import { FILTER_ACTIONS } from "../utils/Actions/filter-actions";
+import { FILTER_ACTIONS } from "../utils/Actions";
 import { filterInitialValues } from "../utils/initialValues";
 
 export const filterReducer = (state, { type, payload }) => {
