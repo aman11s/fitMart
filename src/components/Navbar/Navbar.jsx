@@ -1,12 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useAuth } from "../../context";
+import { useAuth, useWishlist } from "../../context";
 import "./Navbar.css";
 
 export const Navbar = () => {
   const {
     userData: { token: isLoggedin },
   } = useAuth();
+
+  const {
+    wishlistState: { wishlist },
+  } = useWishlist();
 
   return (
     <>
@@ -44,7 +48,11 @@ export const Navbar = () => {
                 className="nav-pills badge-container inline-block"
               >
                 <i className="badge-container-icon bx bx-heart"></i>
-                <span className="icon-badge-number dnd">5</span>
+                {wishlist.length ? (
+                  <span className="icon-badge-number dnd">
+                    {wishlist.length}
+                  </span>
+                ) : null}
               </Link>
             </li>
 

@@ -1,4 +1,4 @@
-import { CATEGORIES_ACTIONS } from "../utils/Actions/categoty-actions";
+import { CATEGORIES_ACTIONS } from "../utils/Actions";
 
 export const categoryReducer = (state, { type, payload }) => {
   switch (type) {

@@ -6,6 +6,7 @@ import {
   CategoryProvider,
   ProductProvider,
   FilterProvider,
+  WishlistProvider,
 } from "./context";
 import { makeServer } from "./server";
 import { BrowserRouter } from "react-router-dom";
@@ -18,11 +19,13 @@ ReactDOM.render(
     <BrowserRouter>
       <AuthProvider>
         <CategoryProvider>
-          <FilterProvider>
-            <ProductProvider>
-              <App />
-            </ProductProvider>
-          </FilterProvider>
+          <WishlistProvider>
+            <FilterProvider>
+              <ProductProvider>
+                <App />
+              </ProductProvider>
+            </FilterProvider>
+          </WishlistProvider>
         </CategoryProvider>
       </AuthProvider>
     </BrowserRouter>

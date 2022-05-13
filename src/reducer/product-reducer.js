@@ -1,4 +1,4 @@
-import { PRODUCTS_ACTIONS } from "../utils/Actions/product-actions";
+import { PRODUCTS_ACTIONS } from "../utils/Actions";
 
 export const productReducer = (state, { type, payload }) => {
   switch (type) {

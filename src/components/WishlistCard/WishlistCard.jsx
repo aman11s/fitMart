@@ -1,25 +1,21 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth, useWishlist } from "../../context";
-import { addWishlistHandler, removerWishlistHandler } from "../../services";
+import { removerWishlistHandler } from "../../services";
 import { isAlreadyInWishlist } from "../../utils";
-import "./ProductCard.css";
 
-export const ProductCard = ({ product }) => {
-  const { title, ratings, price, imgSrc, imgAlt } = product;
-
-  const {
-    userData: { token },
-  } = useAuth();
-
+export const WishlistCard = ({ wishlistItems }) => {
+  const { imgSrc, imgAlt, price, title, ratings } = wishlistItems;
   const {
     wishlistState: { wishlist },
     wishlistDispatch,
   } = useWishlist();
+  const {
+    userData: { token },
+  } = useAuth();
   const navigate = useNavigate();
 
-  const inWishlist = isAlreadyInWishlist(wishlist, product);
-
+  const inWishlist = isAlreadyInWishlist(wishlist, wishlistItems);
   return (
     <>
       <div className="vertical-card auto-width">
@@ -27,22 +23,16 @@ export const ProductCard = ({ product }) => {
           <div className="card-img-container">
             <img className="card-img" src={imgSrc} alt={imgAlt} />
             <span
-              onClick={() =>
-                inWishlist
-                  ? removerWishlistHandler({
-                      token,
-                      product,
-                      wishlist,
-                      wishlistDispatch,
-                      navigate,
-                    })
-                  : addWishlistHandler({
-                      token,
-                      product,
-                      wishlistDispatch,
-                      navigate,
-                    })
-              }
+              onClick={() => {
+                const product = wishlistItems;
+                removerWishlistHandler({
+                  token,
+                  product,
+                  wishlist,
+                  wishlistDispatch,
+                  navigate,
+                });
+              }}
               className={`card-wishlist-icon product-wishlist-icon bx ${
                 inWishlist ? "bxs-heart" : "bx-heart"
               }`}
@@ -59,7 +49,7 @@ export const ProductCard = ({ product }) => {
             {ratings} / 5
           </span>
           <button className="btn card-btn primary-solid-btn primary-btn-text-icon">
-            <i className="btn-icon bx bxs-bolt"></i>Buy Now
+            <i className="btn-icon bx bxs-right-arrow-alt"></i>Move to cart
           </button>
         </div>
       </div>
