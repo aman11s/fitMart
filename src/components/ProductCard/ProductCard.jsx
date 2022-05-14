@@ -1,7 +1,11 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { useAuth, useWishlist } from "../../context";
-import { addWishlistHandler, removerWishlistHandler } from "../../services";
+import { useAuth, useCart, useWishlist } from "../../context";
+import {
+  addToCartHandler,
+  addWishlistHandler,
+  removerWishlistHandler,
+} from "../../services";
 import { isAlreadyInWishlist } from "../../utils";
 import "./ProductCard.css";
 
@@ -16,6 +20,9 @@ export const ProductCard = ({ product }) => {
     wishlistState: { wishlist },
     wishlistDispatch,
   } = useWishlist();
+
+  const { cartDispatch } = useCart();
+
   const navigate = useNavigate();
 
   const inWishlist = isAlreadyInWishlist(wishlist, product);
@@ -58,7 +65,12 @@ export const ProductCard = ({ product }) => {
             <i className="bx bxs-star"></i>
             {ratings} / 5
           </span>
-          <button className="btn card-btn primary-solid-btn primary-btn-text-icon">
+          <button
+            onClick={() =>
+              addToCartHandler({ token, product, cartDispatch, navigate })
+            }
+            className="btn card-btn primary-solid-btn primary-btn-text-icon"
+          >
             <i className="btn-icon bx bxs-bolt"></i>Buy Now
           </button>
         </div>

@@ -1,11 +1,16 @@
-import { createContext } from "react";
-import { useContext, useReducer } from "react/cjs/react.production.min";
+import { createContext, useContext, useReducer } from "react";
+import { cartReducer } from "../reducer";
+import { initialCartState } from "../utils/initialValues";
 
 const CartContext = createContext(null);
 
 const CartProvider = ({ children }) => {
   const [cartState, cartDispatch] = useReducer(cartReducer, initialCartState);
-  return <CartContext.Provider>{children}</CartContext.Provider>;
+  return (
+    <CartContext.Provider value={{ cartState, cartDispatch }}>
+      {children}
+    </CartContext.Provider>
+  );
 };
 
 const useCart = () => useContext(CartContext);
