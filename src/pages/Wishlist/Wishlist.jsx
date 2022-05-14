@@ -1,11 +1,12 @@
 import React from "react";
-import { useAuth, useWishlist } from "../../context";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { useAuth, useWishlist } from "../../context";
 import "./Wishlist.css";
-import { useEffect } from "react";
 import axios from "axios";
 import { WISHLIST_ACTIONS } from "../../utils/Actions";
 import { WishlistCard } from "../../components/WishlistCard/WishlistCard";
+import { Loader } from "../../components";
 
 export const Wishlist = () => {
   const {
@@ -17,8 +18,11 @@ export const Wishlist = () => {
     userData: { token },
   } = useAuth();
 
+  const [wishlistPageLoader, setWishlistPageLoader] = useState(false);
+
   useEffect(() => {
     (async () => {
+      setWishlistPageLoader(true);
       try {
         const { status, data } = await axios({
           method: "GET",
@@ -33,6 +37,8 @@ export const Wishlist = () => {
         }
       } catch (e) {
         console.error(e);
+      } finally {
+        setWishlistPageLoader(false);
       }
     })();
   }, [token, wishlistDispatch]);
@@ -41,29 +47,35 @@ export const Wishlist = () => {
     <>
       {wishlist.length ? (
         <>
-          <main>
-            <h4 className="h4 mt-5 text-center mx-3">
-              My Wishlist ({wishlist.length})
-            </h4>
-            <div className="grid-minmax-card p-5">
-              {wishlist.map((wishlistItems) => {
-                return (
-                  <WishlistCard
-                    key={wishlistItems._id}
-                    wishlistItems={wishlistItems}
-                  />
-                );
-              })}
-            </div>
-          </main>
+          {wishlistPageLoader ? (
+            <main className="empty-wishlist">
+              <Loader />
+            </main>
+          ) : (
+            <main>
+              <h4 className="h4 mt-5 text-center mx-3">
+                My Wishlist ({wishlist.length})
+              </h4>
+              <div className="grid-minmax-card p-5">
+                {wishlist.map((wishlistItems) => {
+                  return (
+                    <WishlistCard
+                      key={wishlistItems._id}
+                      wishlistItems={wishlistItems}
+                    />
+                  );
+                })}
+              </div>
+            </main>
+          )}
         </>
       ) : (
-        <div className="empty-wishlist">
+        <main className="empty-wishlist">
           <h4 className="h4 pb-3">Your wishlist is empty</h4>
           <Link to="/products">
             <button className="btn primary-solid-btn">Start Shopping</button>
           </Link>
-        </div>
+        </main>
       )}
     </>
   );
