@@ -1,4 +1,5 @@
 import axios from "axios";
+import toast from "react-hot-toast";
 import { CART_ACTIONS } from "../utils/Actions";
 
 export const addToCartHandler = async ({
@@ -6,8 +7,10 @@ export const addToCartHandler = async ({
   product,
   cartDispatch,
   navigate,
+  setCartLoader,
 }) => {
   if (token) {
+    setCartLoader(true);
     try {
       const { status, data } = await axios({
         method: "POST",
@@ -16,6 +19,7 @@ export const addToCartHandler = async ({
         data: { product },
       });
       if (status === 201) {
+        toast.success("Added to Cart");
         cartDispatch({
           type: CART_ACTIONS.ADD_TO_CART,
           payload: { add_to_cart: data.cart },
@@ -23,6 +27,8 @@ export const addToCartHandler = async ({
       }
     } catch (e) {
       console.error(e);
+    } finally {
+      setCartLoader(false);
     }
   } else {
     navigate("/login");
