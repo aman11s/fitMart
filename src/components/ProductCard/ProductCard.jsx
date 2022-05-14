@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import ClipLoader from "react-spinners/ClipLoader";
 import { useAuth, useCart, useWishlist } from "../../context";
 import {
   addToCartHandler,
@@ -7,9 +8,7 @@ import {
   removerWishlistHandler,
 } from "../../services";
 import { isAlreadyInCart, isAlreadyInWishlist } from "../../utils";
-import ClipLoader from "react-spinners/ClipLoader";
 import "./ProductCard.css";
-import { useState } from "react";
 
 export const ProductCard = ({ product }) => {
   const { title, ratings, price, imgSrc, imgAlt } = product;
@@ -78,7 +77,7 @@ export const ProductCard = ({ product }) => {
           {inCart ? (
             <button
               onClick={() => navigate("/cart")}
-              className="btn card-btn primary-solid-btn primary-btn-text-icon"
+              className="btn card-btn primary-btn-text-icon go-to-cart-btn"
             >
               <i className="btn-icon bx bxs-right-arrow-alt"></i>Go to cart
             </button>

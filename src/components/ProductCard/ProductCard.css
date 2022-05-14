@@ -6,3 +6,13 @@
 .rating {
   font-weight: 600;
 }
+
+.go-to-cart-btn {
+  background-color: #fe7345;
+  color: #fff;
+  border: 2px solid #fe7345;
+}
+
+.go-to-cart-btn:hover {
+  background-color: #e5653c;
+}
