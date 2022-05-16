@@ -34,3 +34,27 @@ export const addToCartHandler = async ({
     navigate("/login");
   }
 };
+
+export const removeFromCartHandler = async ({
+  cartItems,
+  token,
+  cartDispatch,
+  flag,
+}) => {
+  try {
+    const { status, data } = await axios({
+      method: "DELETE",
+      url: `/api/user/cart/${cartItems._id}`,
+      headers: { authorization: token },
+    });
+    if (status === 200) {
+      !flag && toast.error("Removed from Cart");
+      cartDispatch({
+        type: CART_ACTIONS.DELETE_CART_ITEMS,
+        payload: { delete_cart_item: data.cart },
+      });
+    }
+  } catch (e) {
+    console.error(e);
+  }
+};
