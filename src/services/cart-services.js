@@ -58,3 +58,31 @@ export const removeFromCartHandler = async ({
     console.error(e);
   }
 };
+
+export const updateCartQtyHandler = async ({
+  cartItems,
+  token,
+  actionType,
+  cartDispatch,
+}) => {
+  try {
+    const { status, data } = await axios({
+      method: "POST",
+      url: `/api/user/cart/${cartItems._id}`,
+      headers: { authorization: token },
+      data: {
+        action: {
+          type: actionType,
+        },
+      },
+    });
+    if (status === 200) {
+      cartDispatch({
+        type: CART_ACTIONS.UPDATE_CART_QTY,
+        payload: { update_qty: data.cart },
+      });
+    }
+  } catch (e) {
+    console.error(e);
+  }
+};

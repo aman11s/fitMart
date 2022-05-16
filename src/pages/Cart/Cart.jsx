@@ -52,8 +52,10 @@ export const Cart = () => {
               <Loader />
             </main>
           ) : (
-            <main>
-              <h4 className="h4 mt-5 text-center mx-3">My Cart (3)</h4>
+            <main className="main-min-height">
+              <h4 className="h4 mt-5 text-center mx-3">
+                My Cart ({cart.length})
+              </h4>
               <div className="cart-wrapper">
                 <div className="cart-items gap-3 px-3 py-4 container-flex-justify-center">
                   {cart.map((cartItems) => {

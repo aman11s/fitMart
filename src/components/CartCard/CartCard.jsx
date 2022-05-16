@@ -2,7 +2,11 @@ import React from "react";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { useAuth, useCart, useWishlist } from "../../context";
-import { addWishlistHandler, removeFromCartHandler } from "../../services";
+import {
+  addWishlistHandler,
+  removeFromCartHandler,
+  updateCartQtyHandler,
+} from "../../services";
 import { isAlreadyInWishlist } from "../../utils";
 
 export const CartCard = ({ cartItems }) => {
@@ -36,9 +40,42 @@ export const CartCard = ({ cartItems }) => {
           </div>
           <div className="py-1 product-quantity container-flex-align-center">
             Quantity:
-            <i className="pl-1 minus-icon bx bx-minus-circle"></i>
+            {qty === 1 ? (
+              <span
+                onClick={() =>
+                  removeFromCartHandler({
+                    cartItems,
+                    token,
+                    cartDispatch,
+                  })
+                }
+                className="pl-1 minus-icon bx bx-trash"
+              ></span>
+            ) : (
+              <span
+                onClick={() =>
+                  updateCartQtyHandler({
+                    cartItems,
+                    token,
+                    actionType: "decrement",
+                    cartDispatch,
+                  })
+                }
+                className="pl-1 minus-icon bx bx-minus-circle"
+              ></span>
+            )}
             <span className="mx-1 product-quantity-num">{qty}</span>
-            <i className="plus-icon bx bx-plus-circle"></i>
+            <span
+              onClick={() =>
+                updateCartQtyHandler({
+                  cartItems,
+                  token,
+                  actionType: "increment",
+                  cartDispatch,
+                })
+              }
+              className="plus-icon bx bx-plus-circle"
+            ></span>
           </div>
           <div className="card-horizontal-button">
             <button

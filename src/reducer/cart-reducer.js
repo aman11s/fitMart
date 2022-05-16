@@ -11,6 +11,9 @@ export const cartReducer = (state, { type, payload }) => {
     case CART_ACTIONS.DELETE_CART_ITEMS:
       return { ...state, cart: payload.delete_cart_item };
 
+    case CART_ACTIONS.UPDATE_CART_QTY:
+      return { ...state, cart: payload.update_qty };
+
     default:
       return state;
   }
