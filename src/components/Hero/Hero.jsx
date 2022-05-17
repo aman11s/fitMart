@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import "./Hero.css";
 
 export const Hero = () => {
   return (
@@ -9,7 +10,7 @@ export const Hero = () => {
           <h1>GET FIT</h1>
           <p>Your one stop fitness solution</p>
           <Link to="/products" className="pt-1">
-            <button className="btn primary-solid-btn">Shop now</button>
+            <button className="btn cta-btn primary-solid-btn">Shop now</button>
           </Link>
         </div>
         <img
