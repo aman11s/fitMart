@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useAuth, useCart } from "../../context";
 import { CART_ACTIONS } from "../../utils/Actions";
 import "../Wishlist/Wishlist.css";
-import { CartCard, Loader } from "../../components";
+import { CartCard, CartDetails, Loader } from "../../components";
 
 export const Cart = () => {
   const {
@@ -66,37 +66,7 @@ export const Cart = () => {
                 </div>
 
                 <div className="cart-details container-flex-center px-3 py-4">
-                  <div className="card">
-                    <div className="card-header">
-                      <div className="card-title">PRICE DETAILS</div>
-                    </div>
-                    <div className="card-body">
-                      <div className="py-1 space-between">
-                        <span>Price (3 items)</span>
-                        <span>Rs. 13297</span>
-                      </div>
-                      <div className="py-1 space-between">
-                        <span>Discount</span>
-                        <span>- Rs. 3250</span>
-                      </div>
-                      <div className="py-1 space-between">
-                        <span>Delivery charges</span>
-                        <span>Rs. 150</span>
-                      </div>
-                      <div className="total-price py-1 space-between">
-                        <span>Total Amount</span>
-                        <span>Rs. 10197</span>
-                      </div>
-                      <p className="py-2">
-                        You will save Rs. 3100 on this order
-                      </p>
-                    </div>
-                    <a href="#">
-                      <button className="btn primary-solid-btn">
-                        PLACE ORDER
-                      </button>
-                    </a>
-                  </div>
+                  <CartDetails />
                 </div>
               </div>
             </main>

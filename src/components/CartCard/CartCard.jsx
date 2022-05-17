@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { useAuth, useCart, useWishlist } from "../../context";
@@ -8,6 +8,7 @@ import {
   updateCartQtyHandler,
 } from "../../services";
 import { isAlreadyInWishlist } from "../../utils";
+import { ShadowLoader } from "../ShadowLoader/ShadowLoader";
 
 export const CartCard = ({ cartItems }) => {
   const { title, price, qty, imgAlt, imgSrc } = cartItems;
@@ -23,12 +24,15 @@ export const CartCard = ({ cartItems }) => {
 
   const { cartDispatch } = useCart();
 
+  const [shadowPageLoader, setShadowPageLoader] = useState(false);
+
   const navigate = useNavigate();
 
   const inWishlist = isAlreadyInWishlist(wishlist, cartItems);
 
   return (
     <>
+      {shadowPageLoader && <ShadowLoader />}
       <div className="card card-horizontal">
         <div className="card-img-container">
           <img className="card-img" src={imgSrc} alt={imgAlt} />
@@ -59,6 +63,7 @@ export const CartCard = ({ cartItems }) => {
                     token,
                     actionType: "decrement",
                     cartDispatch,
+                    setShadowPageLoader,
                   })
                 }
                 className="pl-1 minus-icon bx bx-minus-circle"
@@ -72,6 +77,7 @@ export const CartCard = ({ cartItems }) => {
                   token,
                   actionType: "increment",
                   cartDispatch,
+                  setShadowPageLoader,
                 })
               }
               className="plus-icon bx bx-plus-circle"

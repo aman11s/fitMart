@@ -36,7 +36,7 @@ export const Footer = () => {
             </a>
           </li>
         </ul>
-        <div>&copy 2022 | fitMart | All Rights Reserved</div>
+        <div>&copy; 2022 | fitMart | All Rights Reserved</div>
       </footer>
     </>
   );

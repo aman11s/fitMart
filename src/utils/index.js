@@ -7,3 +7,4 @@ export { getMinMaxPrice } from "./getMinMaxPrice";
 export { filterByPriceRange } from "./filter-by-price-range";
 export { isAlreadyInWishlist } from "./is-already-in-wishlist";
 export { isAlreadyInCart } from "./is-already-in-cart";
+export { getCartDetails } from "./get-cart-details";

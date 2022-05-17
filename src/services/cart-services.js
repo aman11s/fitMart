@@ -64,7 +64,9 @@ export const updateCartQtyHandler = async ({
   token,
   actionType,
   cartDispatch,
+  setShadowPageLoader,
 }) => {
+  setShadowPageLoader(true);
   try {
     const { status, data } = await axios({
       method: "POST",
@@ -84,5 +86,7 @@ export const updateCartQtyHandler = async ({
     }
   } catch (e) {
     console.error(e);
+  } finally {
+    setShadowPageLoader(false);
   }
 };

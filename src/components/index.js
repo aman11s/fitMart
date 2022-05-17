@@ -9,3 +9,5 @@ export { Sidebar } from "./Sidebar/Sidebar";
 export { RequiresAuth } from "./RequiresAuth/RequiresAuth";
 export { WishlistCard } from "./WishlistCard/WishlistCard";
 export { CartCard } from "./CartCard/CartCard";
+export { CartDetails } from "./CartDetails/CartDetails";
+export { ShadowLoader } from "./ShadowLoader/ShadowLoader";
