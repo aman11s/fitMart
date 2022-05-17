@@ -1,2 +1,2 @@
 export const isAlreadyInCart = (cart, items) =>
-  cart.find(({ _id }) => _id === items._id);
+  cart.some(({ _id }) => _id === items._id);

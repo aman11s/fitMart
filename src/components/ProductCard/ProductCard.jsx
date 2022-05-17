@@ -50,6 +50,7 @@ export const ProductCard = ({ product }) => {
                       wishlist,
                       wishlistDispatch,
                       navigate,
+                      removeWishlistFlag: true,
                     })
                   : addWishlistHandler({
                       token,

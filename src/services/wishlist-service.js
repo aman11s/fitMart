@@ -37,6 +37,7 @@ export const removerWishlistHandler = async ({
   wishlist,
   wishlistDispatch,
   navigate,
+  removeWishlistFlag,
 }) => {
   if (token) {
     try {
@@ -47,7 +48,7 @@ export const removerWishlistHandler = async ({
         data: { wishlist: wishlist },
       });
       if (status === 200) {
-        toast.error("Removed from Wishlist");
+        removeWishlistFlag && toast.error("Removed from Wishlist");
         wishlistDispatch({
           type: WISHLIST_ACTIONS.REMOVE_FROM_WISHLIST,
           payload: { remove_wishlist: data.wishlist },

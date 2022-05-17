@@ -1,8 +1,9 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { useAuth, useWishlist } from "../../context";
-import { removerWishlistHandler } from "../../services";
-import { isAlreadyInWishlist } from "../../utils";
+import { useAuth, useCart, useWishlist } from "../../context";
+import { addToCartHandler, removerWishlistHandler } from "../../services";
+import { isAlreadyInCart, isAlreadyInWishlist } from "../../utils";
+import toast from "react-hot-toast";
 
 export const WishlistCard = ({ wishlistItems }) => {
   const { imgSrc, imgAlt, price, title, ratings } = wishlistItems;
@@ -13,9 +14,16 @@ export const WishlistCard = ({ wishlistItems }) => {
   const {
     userData: { token },
   } = useAuth();
+  const {
+    cartState: { cart },
+    cartDispatch,
+  } = useCart();
+
   const navigate = useNavigate();
 
   const inWishlist = isAlreadyInWishlist(wishlist, wishlistItems);
+  const inCart = isAlreadyInCart(cart, wishlistItems);
+
   return (
     <>
       <div className="vertical-card auto-width">
@@ -31,6 +39,7 @@ export const WishlistCard = ({ wishlistItems }) => {
                   wishlist,
                   wishlistDispatch,
                   navigate,
+                  removeWishlistFlag: true,
                 });
               }}
               className={`card-wishlist-icon product-wishlist-icon bx ${
@@ -48,7 +57,27 @@ export const WishlistCard = ({ wishlistItems }) => {
             <i className="bx bxs-star"></i>
             {ratings} / 5
           </span>
-          <button className="btn card-btn primary-solid-btn primary-btn-text-icon">
+          <button
+            onClick={() => {
+              inCart
+                ? toast.error("Already in Cart")
+                : addToCartHandler({
+                    token,
+                    product: wishlistItems,
+                    cartDispatch,
+                    navigate,
+                  });
+              removerWishlistHandler({
+                token,
+                product: wishlistItems,
+                wishlist,
+                wishlistDispatch,
+                navigate,
+                removeWishlistFlag: false,
+              });
+            }}
+            className="btn card-btn primary-solid-btn primary-btn-text-icon"
+          >
             <i className="btn-icon bx bxs-right-arrow-alt"></i>Move to cart
           </button>
         </div>

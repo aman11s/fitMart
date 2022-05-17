@@ -100,7 +100,7 @@ export const CartCard = ({ cartItems }) => {
                   cartItems,
                   token,
                   cartDispatch,
-                  flag: true,
+                  removeCartFlag: false,
                 });
               }}
               className="btn card-btn secondary-solid-btn disable"
@@ -114,6 +114,7 @@ export const CartCard = ({ cartItems }) => {
                   cartItems,
                   token,
                   cartDispatch,
+                  removeCartFlag: true,
                 });
               }}
               className="btn card-btn secondary-outline-btn"
