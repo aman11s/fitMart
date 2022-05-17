@@ -1,8 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useAuth, useWishlist } from "../../context";
-import { addWishlistHandler, removerWishlistHandler } from "../../services";
-import { isAlreadyInWishlist } from "../../utils";
+import ClipLoader from "react-spinners/ClipLoader";
+import { useAuth, useCart, useWishlist } from "../../context";
+import {
+  addToCartHandler,
+  addWishlistHandler,
+  removerWishlistHandler,
+} from "../../services";
+import { isAlreadyInCart, isAlreadyInWishlist } from "../../utils";
 import "./ProductCard.css";
 
 export const ProductCard = ({ product }) => {
@@ -16,9 +21,19 @@ export const ProductCard = ({ product }) => {
     wishlistState: { wishlist },
     wishlistDispatch,
   } = useWishlist();
+
+  const {
+    cartState: { cart },
+    cartDispatch,
+  } = useCart();
+
+  const [cartLoader, setCartLoader] = useState(false);
+
   const navigate = useNavigate();
 
   const inWishlist = isAlreadyInWishlist(wishlist, product);
+
+  const inCart = isAlreadyInCart(cart, product);
 
   return (
     <>
@@ -35,6 +50,7 @@ export const ProductCard = ({ product }) => {
                       wishlist,
                       wishlistDispatch,
                       navigate,
+                      removeWishlistFlag: true,
                     })
                   : addWishlistHandler({
                       token,
@@ -58,9 +74,41 @@ export const ProductCard = ({ product }) => {
             <i className="bx bxs-star"></i>
             {ratings} / 5
           </span>
-          <button className="btn card-btn primary-solid-btn primary-btn-text-icon">
-            <i className="btn-icon bx bxs-bolt"></i>Buy Now
-          </button>
+
+          {inCart ? (
+            <button
+              onClick={() => navigate("/cart")}
+              className="btn card-btn primary-btn-text-icon go-to-cart-btn"
+            >
+              <i className="btn-icon bx bxs-right-arrow-alt"></i>Go to cart
+            </button>
+          ) : (
+            <button
+              onClick={() =>
+                addToCartHandler({
+                  token,
+                  product,
+                  cartDispatch,
+                  navigate,
+                  setCartLoader,
+                })
+              }
+              className="btn card-btn primary-solid-btn primary-btn-text-icon"
+            >
+              {cartLoader ? (
+                <ClipLoader
+                  color={"#fff"}
+                  loading={cartLoader}
+                  speedMultiplier={2}
+                  size={20}
+                />
+              ) : (
+                <span className="primary-btn-text-icon">
+                  <i className="btn-icon bx bxs-bolt"></i>Buy Now
+                </span>
+              )}
+            </button>
+          )}
         </div>
       </div>
     </>

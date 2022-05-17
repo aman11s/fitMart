@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useAuth, useWishlist } from "../../context";
+import { useAuth, useCart, useWishlist } from "../../context";
 import "./Navbar.css";
 
 export const Navbar = () => {
@@ -11,6 +11,10 @@ export const Navbar = () => {
   const {
     wishlistState: { wishlist },
   } = useWishlist();
+
+  const {
+    cartState: { cart },
+  } = useCart();
 
   return (
     <>
@@ -62,7 +66,9 @@ export const Navbar = () => {
                 className="nav-pills badge-container inline-block"
               >
                 <i className="badge-container-icon bx bx-cart"></i>
-                <div className="icon-badge-number dnd">3</div>
+                {cart.length ? (
+                  <span className="icon-badge-number dnd">{cart.length}</span>
+                ) : null}
               </Link>
             </li>
           </ul>
