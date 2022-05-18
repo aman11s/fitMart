@@ -51,6 +51,7 @@ export const CartCard = ({ cartItems }) => {
                     cartItems,
                     token,
                     cartDispatch,
+                    removeCartFlag: true,
                   })
                 }
                 className="pl-1 minus-icon bx bx-trash"
