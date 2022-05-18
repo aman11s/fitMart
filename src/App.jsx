@@ -8,6 +8,7 @@ import {
   Profile,
   Wishlist,
   Cart,
+  NotFound,
 } from "./pages";
 import { Routes, Route } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
@@ -23,6 +24,7 @@ function App() {
         <Route path="/products" element={<Products />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="*" element={<NotFound />} />
 
         {/* Private Routes */}
         <Route

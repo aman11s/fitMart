@@ -1,0 +1,14 @@
+.not-found {
+  display: block;
+  max-width: 30rem;
+  margin: 0 auto;
+}
+
+.center-btn {
+  display: block;
+  margin: 0 auto;
+}
+
+.not-found-main {
+  height: calc(100vh - 15.4rem);
+}
