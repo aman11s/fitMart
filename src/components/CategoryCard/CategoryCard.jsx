@@ -1,45 +1,39 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { useFilter } from "../../context";
+import { useFilter, useProducts } from "../../context";
+import { getMinMaxPrice } from "../../utils";
 import { FILTER_ACTIONS } from "../../utils/Actions";
+
+const categoryDictionary = {
+  "Whey Protein": "protein",
+  Creatine: "creatine",
+  Gainer: "gainer",
+  Multivitamins: "multivitamin",
+};
 
 export const CategoryCard = ({ category }) => {
   const { categoryName, imgSrc, alt } = category;
 
   const { dispatch: filterDispatch } = useFilter();
+  const {
+    state: { products },
+  } = useProducts();
 
   const navigate = useNavigate();
 
+  const { maxPrice } = getMinMaxPrice(products);
+
   const categoryCardClickHandler = (category) => {
+    filterDispatch({
+      type: FILTER_ACTIONS.CLEAR_FILTER,
+      payload: { priceRange: maxPrice },
+    });
+    filterDispatch({
+      type: FILTER_ACTIONS.CATEGORY,
+      payload: { category: categoryDictionary[category] },
+    });
+
     navigate("/products");
-    switch (category) {
-      case "Whey Protein":
-        return filterDispatch({
-          type: FILTER_ACTIONS.CATEGORY,
-          payload: { category: "protein" },
-        });
-
-      case "Creatine":
-        return filterDispatch({
-          type: FILTER_ACTIONS.CATEGORY,
-          payload: { category: "creatine" },
-        });
-
-      case "Gainer":
-        return filterDispatch({
-          type: FILTER_ACTIONS.CATEGORY,
-          payload: { category: "gainer" },
-        });
-
-      case "Multivitamins":
-        return filterDispatch({
-          type: FILTER_ACTIONS.CATEGORY,
-          payload: { category: "multivitamin" },
-        });
-
-      default:
-        break;
-    }
   };
 
   return (
