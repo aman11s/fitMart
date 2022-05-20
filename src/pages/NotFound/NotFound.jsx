@@ -1,8 +1,10 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { useDocumentTitle } from "../../hooks/useDocumentTitle";
 import "./NotFound.css";
 
 export const NotFound = () => {
+  useDocumentTitle("Page Not Found");
   const navigate = useNavigate();
 
   return (

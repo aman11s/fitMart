@@ -2,6 +2,7 @@ import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { singupHandler } from "../../services";
+import { useDocumentTitle } from "../../hooks/useDocumentTitle";
 
 const initialFormData = {
   firstName: "",
@@ -12,48 +13,50 @@ const initialFormData = {
   termsAndConditions: false,
 };
 
+const formDetails = [
+  {
+    id: 1,
+    label: "First Name",
+    name: "firstName",
+    type: "text",
+    placeholder: "first name",
+  },
+
+  {
+    id: 2,
+    label: "Last Name",
+    name: "lastName",
+    type: "text",
+    placeholder: "last name",
+  },
+
+  {
+    id: 3,
+    label: "Email",
+    name: "email",
+    type: "email",
+    placeholder: "email",
+  },
+
+  {
+    id: 4,
+    label: "Password",
+    name: "password",
+    type: "password",
+    placeholder: "password",
+  },
+
+  {
+    id: 5,
+    label: "Confirm Password",
+    name: "confirmPassword",
+    type: "password",
+    placeholder: "confirm password",
+  },
+];
+
 export const Signup = () => {
-  const formDetails = [
-    {
-      id: 1,
-      label: "First Name",
-      name: "firstName",
-      type: "text",
-      placeholder: "first name",
-    },
-
-    {
-      id: 2,
-      label: "Last Name",
-      name: "lastName",
-      type: "text",
-      placeholder: "last name",
-    },
-
-    {
-      id: 3,
-      label: "Email",
-      name: "email",
-      type: "email",
-      placeholder: "email",
-    },
-
-    {
-      id: 4,
-      label: "Password",
-      name: "password",
-      type: "password",
-      placeholder: "password",
-    },
-
-    {
-      id: 5,
-      label: "Confirm Password",
-      name: "confirmPassword",
-      type: "password",
-      placeholder: "confirm password",
-    },
-  ];
+  useDocumentTitle("Singup");
 
   const [formData, setFormData] = useState(initialFormData);
 

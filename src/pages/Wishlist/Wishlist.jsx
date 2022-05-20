@@ -7,8 +7,10 @@ import axios from "axios";
 import { WISHLIST_ACTIONS } from "../../utils/Actions";
 import { WishlistCard } from "../../components/WishlistCard/WishlistCard";
 import { Loader } from "../../components";
+import { useDocumentTitle } from "../../hooks/useDocumentTitle";
 
 export const Wishlist = () => {
+  useDocumentTitle("Wishlist");
   const {
     wishlistState: { wishlist },
     wishlistDispatch,

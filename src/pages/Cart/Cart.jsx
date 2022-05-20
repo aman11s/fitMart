@@ -5,8 +5,10 @@ import { useAuth, useCart } from "../../context";
 import { CART_ACTIONS } from "../../utils/Actions";
 import "../Wishlist/Wishlist.css";
 import { CartCard, CartDetails, Loader } from "../../components";
+import { useDocumentTitle } from "../../hooks/useDocumentTitle";
 
 export const Cart = () => {
+  useDocumentTitle("Cart");
   const {
     cartState: { cart },
     cartDispatch,

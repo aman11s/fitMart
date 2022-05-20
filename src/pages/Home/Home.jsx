@@ -2,8 +2,10 @@ import React from "react";
 import { CategoryCard, Hero, Loader, TrumpCard } from "../../components";
 import { trumpCardObj } from "../../utils";
 import { useCategory } from "../../context";
+import { useDocumentTitle } from "../../hooks/useDocumentTitle";
 
 export const Home = () => {
+  useDocumentTitle("Home");
   const { state } = useCategory();
   const { categories, categoryLoader } = state;
 
