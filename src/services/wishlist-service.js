@@ -7,9 +7,11 @@ export const addWishlistHandler = async ({
   product,
   wishlistDispatch,
   navigate,
+  setWishlistDisable,
 }) => {
   if (token) {
     try {
+      setWishlistDisable(true);
       const { status, data } = await axios({
         method: "POST",
         url: "/api/user/wishlist",
@@ -25,6 +27,8 @@ export const addWishlistHandler = async ({
       }
     } catch (e) {
       console.error(e);
+    } finally {
+      setWishlistDisable(false);
     }
   } else {
     navigate("/login");
@@ -38,9 +42,11 @@ export const removerWishlistHandler = async ({
   wishlistDispatch,
   navigate,
   removeWishlistFlag,
+  setWishlistDisable,
 }) => {
   if (token) {
     try {
+      setWishlistDisable(true);
       const { status, data } = await axios({
         method: "DELETE",
         url: `/api/user/wishlist/${product._id}`,
@@ -56,6 +62,8 @@ export const removerWishlistHandler = async ({
       }
     } catch (e) {
       console.error(e);
+    } finally {
+      setWishlistDisable(false);
     }
   } else {
     navigate("/login");

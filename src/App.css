@@ -4,6 +4,10 @@
   cursor: pointer;
 }
 
-.btn[disabled] {
+button[disabled] {
   cursor: not-allowed;
+}
+
+.btn-icon {
+  border: none;
 }
