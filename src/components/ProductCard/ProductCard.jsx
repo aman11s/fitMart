@@ -94,6 +94,7 @@ export const ProductCard = ({ product }) => {
                 })
               }
               className="btn card-btn primary-solid-btn primary-btn-text-icon"
+              disabled={cartLoader}
             >
               {cartLoader ? (
                 <ClipLoader

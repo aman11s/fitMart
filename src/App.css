@@ -3,3 +3,7 @@
 .primary-link {
   cursor: pointer;
 }
+
+.btn[disabled] {
+  cursor: not-allowed;
+}

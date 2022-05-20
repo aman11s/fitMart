@@ -10,8 +10,8 @@ export const addToCartHandler = async ({
   setCartLoader,
 }) => {
   if (token) {
-    setCartLoader && setCartLoader(true);
     try {
+      setCartLoader && setCartLoader(true);
       const { status, data } = await axios({
         method: "POST",
         url: "/api/user/cart",
