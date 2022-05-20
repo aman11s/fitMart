@@ -67,6 +67,10 @@ export const Products = () => {
     }
   }, [dispatch, products, filterDispatch]);
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <>
       <div className="grid-page-layout">
