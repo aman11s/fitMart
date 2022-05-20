@@ -10,4 +10,5 @@ button[disabled] {
 
 .btn-icon {
   border: none;
+  background-color: transparent;
 }

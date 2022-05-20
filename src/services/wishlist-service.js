@@ -54,6 +54,7 @@ export const removerWishlistHandler = async ({
         data: { wishlist: wishlist },
       });
       if (status === 200) {
+        setWishlistDisable(false);
         removeWishlistFlag && toast.error("Removed from Wishlist");
         wishlistDispatch({
           type: WISHLIST_ACTIONS.REMOVE_FROM_WISHLIST,
@@ -62,8 +63,6 @@ export const removerWishlistHandler = async ({
       }
     } catch (e) {
       console.error(e);
-    } finally {
-      setWishlistDisable(false);
     }
   } else {
     navigate("/login");
