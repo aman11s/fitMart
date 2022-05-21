@@ -4,6 +4,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useAuth } from "../../context";
 import { loginHandler } from "../../services";
+import { useDocumentTitle } from "../../hooks/useDocumentTitle";
 
 const formDetails = [
   {
@@ -34,6 +35,7 @@ const initialFormData = {
 };
 
 export const Login = () => {
+  useDocumentTitle("Login");
   const [formData, setFormData] = useState(initialFormData);
 
   const { email, password } = formData;

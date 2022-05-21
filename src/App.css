@@ -3,3 +3,16 @@
 .primary-link {
   cursor: pointer;
 }
+
+button[disabled] {
+  cursor: not-allowed;
+}
+
+.btn-icon {
+  border: none;
+  background-color: transparent;
+}
+
+.main-min-height {
+  min-height: calc(100vh - 15.4rem);
+}

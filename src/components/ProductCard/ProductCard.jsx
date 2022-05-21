@@ -28,6 +28,7 @@ export const ProductCard = ({ product }) => {
   } = useCart();
 
   const [cartLoader, setCartLoader] = useState(false);
+  const [wishlistDisable, setWishlistDisable] = useState(false);
 
   const navigate = useNavigate();
 
@@ -41,7 +42,7 @@ export const ProductCard = ({ product }) => {
         <div className="card-header">
           <div className="card-img-container">
             <img className="card-img" src={imgSrc} alt={imgAlt} />
-            <span
+            <button
               onClick={() =>
                 inWishlist
                   ? removerWishlistHandler({
@@ -51,18 +52,21 @@ export const ProductCard = ({ product }) => {
                       wishlistDispatch,
                       navigate,
                       removeWishlistFlag: true,
+                      setWishlistDisable,
                     })
                   : addWishlistHandler({
                       token,
                       product,
                       wishlistDispatch,
                       navigate,
+                      setWishlistDisable,
                     })
               }
-              className={`card-wishlist-icon product-wishlist-icon bx ${
+              disabled={wishlistDisable}
+              className={`btn-icon card-wishlist-icon product-wishlist-icon bx ${
                 inWishlist ? "bxs-heart" : "bx-heart"
               }`}
-            ></span>
+            ></button>
           </div>
         </div>
         <div className="card-body">
@@ -94,6 +98,7 @@ export const ProductCard = ({ product }) => {
                 })
               }
               className="btn card-btn primary-solid-btn primary-btn-text-icon"
+              disabled={cartLoader}
             >
               {cartLoader ? (
                 <ClipLoader

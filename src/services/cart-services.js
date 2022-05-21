@@ -10,8 +10,8 @@ export const addToCartHandler = async ({
   setCartLoader,
 }) => {
   if (token) {
-    setCartLoader && setCartLoader(true);
     try {
+      setCartLoader && setCartLoader(true);
       const { status, data } = await axios({
         method: "POST",
         url: "/api/user/cart",
@@ -40,14 +40,17 @@ export const removeFromCartHandler = async ({
   token,
   cartDispatch,
   removeCartFlag,
+  setCartDisable,
 }) => {
   try {
+    setCartDisable && setCartDisable(true);
     const { status, data } = await axios({
       method: "DELETE",
       url: `/api/user/cart/${cartItems._id}`,
       headers: { authorization: token },
     });
     if (status === 200) {
+      setCartDisable && setCartDisable(false);
       removeCartFlag && toast.error("Removed from Cart");
       cartDispatch({
         type: CART_ACTIONS.DELETE_CART_ITEMS,

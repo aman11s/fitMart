@@ -25,6 +25,8 @@ export const CartCard = ({ cartItems }) => {
   const { cartDispatch } = useCart();
 
   const [shadowPageLoader, setShadowPageLoader] = useState(false);
+  const [wishlistDisable, setWishlistDisable] = useState(false);
+  const [cartDisable, setCartDisable] = useState(false);
 
   const navigate = useNavigate();
 
@@ -45,18 +47,21 @@ export const CartCard = ({ cartItems }) => {
           <div className="py-1 product-quantity container-flex-align-center">
             Quantity:
             {qty === 1 ? (
-              <span
+              <button
                 onClick={() =>
                   removeFromCartHandler({
                     cartItems,
                     token,
                     cartDispatch,
+                    removeCartFlag: true,
+                    setCartDisable,
                   })
                 }
-                className="pl-1 minus-icon bx bx-trash"
-              ></span>
+                className="btn-icon pl-1 minus-icon bx bx-trash"
+                disabled={cartDisable}
+              ></button>
             ) : (
-              <span
+              <button
                 onClick={() =>
                   updateCartQtyHandler({
                     cartItems,
@@ -66,11 +71,11 @@ export const CartCard = ({ cartItems }) => {
                     setShadowPageLoader,
                   })
                 }
-                className="pl-1 minus-icon bx bx-minus-circle"
-              ></span>
+                className="btn-icon pl-1 minus-icon bx bx-minus-circle"
+              ></button>
             )}
             <span className="mx-1 product-quantity-num">{qty}</span>
-            <span
+            <button
               onClick={() =>
                 updateCartQtyHandler({
                   cartItems,
@@ -80,21 +85,21 @@ export const CartCard = ({ cartItems }) => {
                   setShadowPageLoader,
                 })
               }
-              className="plus-icon bx bx-plus-circle"
-            ></span>
+              className="btn-icon plus-icon bx bx-plus-circle"
+            ></button>
           </div>
           <div className="card-horizontal-button">
             <button
               onClick={() => {
                 if (inWishlist) {
-                  toast.error("Already in Wishlist");
-                  return;
+                  return toast.error("Already in Wishlist");
                 }
                 addWishlistHandler({
                   token,
                   product: cartItems,
                   wishlistDispatch,
                   navigate,
+                  setWishlistDisable,
                 });
                 removeFromCartHandler({
                   cartItems,
@@ -103,7 +108,8 @@ export const CartCard = ({ cartItems }) => {
                   removeCartFlag: false,
                 });
               }}
-              className="btn card-btn secondary-solid-btn disable"
+              className="btn card-btn secondary-solid-btn"
+              disabled={wishlistDisable}
             >
               Move to wishlist
             </button>
@@ -115,9 +121,11 @@ export const CartCard = ({ cartItems }) => {
                   token,
                   cartDispatch,
                   removeCartFlag: true,
+                  setCartDisable,
                 });
               }}
               className="btn card-btn secondary-outline-btn"
+              disabled={cartDisable}
             >
               Remove from cart
             </button>

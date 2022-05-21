@@ -5,7 +5,3 @@
   align-items: center;
   height: calc(100vh - 15.4rem);
 }
-
-.main-min-height {
-  min-height: calc(100vh - 17.9rem);
-}

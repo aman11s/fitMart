@@ -1,0 +1,11 @@
+.not-found {
+  display: block;
+  max-width: 30rem;
+  margin: 0 auto;
+}
+
+.center-btn {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}

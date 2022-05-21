@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth, useCart, useWishlist } from "../../context";
 import { addToCartHandler, removerWishlistHandler } from "../../services";
-import { isAlreadyInCart, isAlreadyInWishlist } from "../../utils";
+import { isAlreadyInCart } from "../../utils";
 import toast from "react-hot-toast";
 
 export const WishlistCard = ({ wishlistItems }) => {
@@ -21,7 +21,8 @@ export const WishlistCard = ({ wishlistItems }) => {
 
   const navigate = useNavigate();
 
-  const inWishlist = isAlreadyInWishlist(wishlist, wishlistItems);
+  const [wishlistDisable, setWishlistDisable] = useState(false);
+
   const inCart = isAlreadyInCart(cart, wishlistItems);
 
   return (
@@ -30,7 +31,7 @@ export const WishlistCard = ({ wishlistItems }) => {
         <div className="card-header">
           <div className="card-img-container">
             <img className="card-img" src={imgSrc} alt={imgAlt} />
-            <span
+            <button
               onClick={() => {
                 const product = wishlistItems;
                 removerWishlistHandler({
@@ -40,12 +41,12 @@ export const WishlistCard = ({ wishlistItems }) => {
                   wishlistDispatch,
                   navigate,
                   removeWishlistFlag: true,
+                  setWishlistDisable,
                 });
               }}
-              className={`card-wishlist-icon product-wishlist-icon bx ${
-                inWishlist ? "bxs-heart" : "bx-heart"
-              }`}
-            ></span>
+              className="btn-icon card-wishlist-icon product-wishlist-icon bx bxs-heart"
+              disabled={wishlistDisable}
+            ></button>
           </div>
         </div>
         <div className="card-body">
@@ -59,14 +60,16 @@ export const WishlistCard = ({ wishlistItems }) => {
           </span>
           <button
             onClick={() => {
-              inCart
-                ? toast.error("Already in Cart")
-                : addToCartHandler({
-                    token,
-                    product: wishlistItems,
-                    cartDispatch,
-                    navigate,
-                  });
+              if (inCart) {
+                return toast.error("Already in Cart");
+              }
+
+              addToCartHandler({
+                token,
+                product: wishlistItems,
+                cartDispatch,
+                navigate,
+              });
               removerWishlistHandler({
                 token,
                 product: wishlistItems,
@@ -74,9 +77,11 @@ export const WishlistCard = ({ wishlistItems }) => {
                 wishlistDispatch,
                 navigate,
                 removeWishlistFlag: false,
+                setWishlistDisable,
               });
             }}
             className="btn card-btn primary-solid-btn primary-btn-text-icon"
+            disabled={wishlistDisable}
           >
             <i className="btn-icon bx bxs-right-arrow-alt"></i>Move to cart
           </button>

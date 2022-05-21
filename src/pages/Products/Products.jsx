@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { Loader, ProductCard, Sidebar } from "../../components";
 import { useProducts } from "../../context";
 import { useFilter } from "../../context/filter-context";
+import { useDocumentTitle } from "../../hooks/useDocumentTitle";
 import {
   filterByCategories,
   filterByPriceRange,
@@ -16,6 +17,7 @@ import { PRODUCTS_ACTIONS } from "../../utils/Actions/product-actions";
 import "./Products.css";
 
 export const Products = () => {
+  useDocumentTitle("Products");
   const {
     state: { products, productLoader },
     dispatch,
@@ -64,6 +66,10 @@ export const Products = () => {
       })();
     }
   }, [dispatch, products, filterDispatch]);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <>

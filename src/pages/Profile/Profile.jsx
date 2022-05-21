@@ -3,8 +3,10 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../context";
 import toast from "react-hot-toast";
 import "./Profile.css";
+import { useDocumentTitle } from "../../hooks/useDocumentTitle";
 
 export const Profile = () => {
+  useDocumentTitle("Profile");
   const {
     userData: { user },
     setUserData,
