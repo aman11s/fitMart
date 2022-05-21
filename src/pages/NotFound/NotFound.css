@@ -6,9 +6,6 @@
 
 .center-btn {
   display: block;
-  margin: 0 auto;
-}
-
-.not-found-main {
-  height: calc(100vh - 15.4rem);
+  margin-left: auto;
+  margin-right: auto;
 }

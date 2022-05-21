@@ -8,7 +8,7 @@ export const NotFound = () => {
   const navigate = useNavigate();
 
   return (
-    <main className="not-found-main">
+    <main className="main-min-height">
       <img
         src="https://fitmart-screens.netlify.app/assets/404-Error.svg"
         alt="404-error"
@@ -16,7 +16,7 @@ export const NotFound = () => {
       />
       <button
         onClick={() => navigate("/")}
-        className="center-btn btn primary-solid-btn"
+        className="center-btn mb-3 btn primary-solid-btn"
       >
         Back to Home
       </button>
