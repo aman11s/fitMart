@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { useAuth, useCart, useWishlist } from "../../context";
+import { useDocumentTitle } from "../../hooks/useDocumentTitle";
 import { addToCartHandler, addWishlistHandler } from "../../services";
 import {
   isAlreadyInCart,
@@ -12,6 +13,8 @@ import "./SingleProductCard.css";
 
 export const SingleProductCard = ({ singleProduct }) => {
   const { imgSrc, imgAlt, price, ratings, title } = singleProduct;
+
+  const { setDocumentTitle } = useDocumentTitle("");
 
   const navigate = useNavigate();
 
@@ -34,6 +37,10 @@ export const SingleProductCard = ({ singleProduct }) => {
 
   const [wishlistDisable, setWishlistDisable] = useState(false);
   const [cartDisable, setCartDisable] = useState(false);
+
+  useEffect(() => {
+    setDocumentTitle(title);
+  });
 
   return (
     <>

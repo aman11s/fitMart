@@ -1,10 +1,10 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 export const useDocumentTitle = (title) => {
-  const documentTitle = title;
+  const [documentTitle, setDocumentTitle] = useState(title);
   useEffect(() => {
     document.title = `${documentTitle} | fitMart`;
   }, [documentTitle]);
 
-  return { documentTitle };
+  return { documentTitle, setDocumentTitle };
 };
