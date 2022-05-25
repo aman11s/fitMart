@@ -1,9 +1,40 @@
-import React from "react";
-import { trumpCardObj } from "../../utils";
+import React, { useState } from "react";
+import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
+import { useAuth, useCart, useWishlist } from "../../context";
+import { addToCartHandler, addWishlistHandler } from "../../services";
+import {
+  isAlreadyInCart,
+  isAlreadyInWishlist,
+  trumpCardObj,
+} from "../../utils";
 import "./SingleProductCard.css";
 
 export const SingleProductCard = ({ singleProduct }) => {
   const { imgSrc, imgAlt, price, ratings, title } = singleProduct;
+
+  const navigate = useNavigate();
+
+  const {
+    userData: { token },
+  } = useAuth();
+
+  const {
+    wishlistState: { wishlist },
+    wishlistDispatch,
+  } = useWishlist();
+
+  const {
+    cartState: { cart },
+    cartDispatch,
+  } = useCart();
+
+  const inWishlist = isAlreadyInWishlist(wishlist, singleProduct);
+  const inCart = isAlreadyInCart(cart, singleProduct);
+
+  const [wishlistDisable, setWishlistDisable] = useState(false);
+  const [cartDisable, setCartDisable] = useState(false);
+
   return (
     <>
       <div className="single-product-card">
@@ -32,8 +63,42 @@ export const SingleProductCard = ({ singleProduct }) => {
           })}
 
           <div className="product-card-btn my-2">
-            <button class="btn primary-solid-btn mr-1">Add to Cart</button>
-            <button class="btn primary-outline-btn">Add to Wishlist</button>
+            <button
+              onClick={() => {
+                if (inCart) {
+                  return toast.error("Already in Cart");
+                }
+                addToCartHandler({
+                  token,
+                  product: singleProduct,
+                  cartDispatch,
+                  navigate,
+                  setCartLoader: setCartDisable,
+                });
+              }}
+              className="btn primary-solid-btn mr-1"
+              disabled={cartDisable}
+            >
+              Add to Cart
+            </button>
+            <button
+              onClick={() => {
+                if (inWishlist) {
+                  return toast.error("Already in Wishlist");
+                }
+                addWishlistHandler({
+                  token,
+                  product: singleProduct,
+                  wishlistDispatch,
+                  navigate,
+                  setWishlistDisable,
+                });
+              }}
+              className="btn primary-outline-btn"
+              disabled={wishlistDisable}
+            >
+              Add to Wishlist
+            </button>
           </div>
         </div>
       </div>

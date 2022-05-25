@@ -15,8 +15,6 @@ export const SingleProduct = () => {
 
   const singleProduct = getProduct(products, productId);
 
-  console.log(singleProduct);
-
   return (
     <>
       <main className="single-product-main">
