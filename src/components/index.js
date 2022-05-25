@@ -11,3 +11,4 @@ export { WishlistCard } from "./WishlistCard/WishlistCard";
 export { CartCard } from "./CartCard/CartCard";
 export { CartDetails } from "./CartDetails/CartDetails";
 export { ShadowLoader } from "./ShadowLoader/ShadowLoader";
+export { SingleProductCard } from "./SingleProductCard/SingleProductCard";

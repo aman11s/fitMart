@@ -6,3 +6,4 @@ export { Profile } from "./Profile/Profile";
 export { Wishlist } from "./Wishlist/Wishlist";
 export { Cart } from "./Cart/Cart";
 export { NotFound } from "./NotFound/NotFound";
+export { SingleProduct } from "./SingleProduct/SingleProduct";

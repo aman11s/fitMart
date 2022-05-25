@@ -9,6 +9,7 @@ import {
   Wishlist,
   Cart,
   NotFound,
+  SingleProduct,
 } from "./pages";
 import { Routes, Route } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
@@ -24,6 +25,7 @@ function App() {
         <Route path="/products" element={<Products />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="/products/:productId" element={<SingleProduct />} />
         <Route path="*" element={<NotFound />} />
 
         {/* Private Routes */}
