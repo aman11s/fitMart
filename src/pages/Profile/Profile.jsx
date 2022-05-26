@@ -16,9 +16,9 @@ export const Profile = () => {
   const navigate = useNavigate();
 
   const logoutHandler = () => {
+    navigate("/");
     setUserData({});
     localStorage.removeItem("userData");
-    navigate("/");
     toast.success("Successfully logged out!");
   };
 

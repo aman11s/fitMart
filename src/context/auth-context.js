@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, useEffect } from "react";
+import { createContext, useContext, useState } from "react";
 
 const AuthContext = createContext(null);
 
@@ -6,10 +6,6 @@ const AuthProvider = ({ children }) => {
   const [userData, setUserData] = useState(
     JSON.parse(localStorage.getItem("userData")) || {}
   );
-
-  useEffect(() => {
-    localStorage.setItem("userData", JSON.stringify(userData));
-  }, [userData]);
 
   return (
     <AuthContext.Provider value={{ userData, setUserData }}>
