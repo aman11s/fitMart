@@ -22,13 +22,12 @@ export const SingleProduct = () => {
           url: `/api/products/${productId}`,
         });
         if (status === 200) {
+          setPageLoader(false);
           setDocumentTitle(data.product.title);
           setSingleProduct(data.product);
         }
       } catch (e) {
         console.error(e);
-      } finally {
-        setPageLoader(false);
       }
     })();
   }, [productId, setDocumentTitle]);
