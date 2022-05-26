@@ -28,3 +28,9 @@ button[disabled] {
 .fw-800 {
   font-weight: 800;
 }
+
+.loader-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}

@@ -34,7 +34,7 @@ export const SingleProduct = () => {
 
   if (pageLoader) {
     return (
-      <main className="main-min-height container-flex-justify-center">
+      <main className="main-min-height loader-page">
         <Loader />
       </main>
     );
