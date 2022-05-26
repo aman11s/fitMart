@@ -1,4 +1,5 @@
 import { WISHLIST_ACTIONS } from "../utils/Actions";
+import { initialCartState, initialWishlistState } from "../utils/initialValues";
 
 export const wishlistReducer = (state, { type, payload }) => {
   switch (type) {
@@ -10,6 +11,9 @@ export const wishlistReducer = (state, { type, payload }) => {
 
     case WISHLIST_ACTIONS.SHOW_WISHLIST:
       return { ...state, wishlist: payload.show_wishlist };
+
+    case WISHLIST_ACTIONS.CLEAR_WISHLIST:
+      return { ...initialWishlistState };
 
     default:
       return state;

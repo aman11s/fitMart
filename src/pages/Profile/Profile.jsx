@@ -1,9 +1,10 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "../../context";
+import { useAuth, useWishlist } from "../../context";
 import toast from "react-hot-toast";
 import "./Profile.css";
 import { useDocumentTitle } from "../../hooks/useDocumentTitle";
+import { WISHLIST_ACTIONS } from "../../utils/Actions";
 
 export const Profile = () => {
   useDocumentTitle("Profile");
@@ -12,12 +13,15 @@ export const Profile = () => {
     setUserData,
   } = useAuth();
 
+  const { wishlistDispatch } = useWishlist();
+
   const { firstName, lastName, email } = user;
   const navigate = useNavigate();
 
   const logoutHandler = () => {
     navigate("/");
     setUserData({});
+    wishlistDispatch({ type: WISHLIST_ACTIONS.CLEAR_WISHLIST });
     localStorage.removeItem("userData");
     toast.success("Successfully logged out!");
   };
