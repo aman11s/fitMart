@@ -1,4 +1,5 @@
 import { CART_ACTIONS } from "../utils/Actions";
+import { initialCartState } from "../utils/initialValues";
 
 export const cartReducer = (state, { type, payload }) => {
   switch (type) {
@@ -13,6 +14,9 @@ export const cartReducer = (state, { type, payload }) => {
 
     case CART_ACTIONS.UPDATE_CART_QTY:
       return { ...state, cart: payload.update_qty };
+
+    case CART_ACTIONS.CLEAR_CART:
+      return { ...initialCartState };
 
     default:
       return state;

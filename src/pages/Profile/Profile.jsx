@@ -1,10 +1,10 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { useAuth, useWishlist } from "../../context";
+import { useAuth, useCart, useWishlist } from "../../context";
 import toast from "react-hot-toast";
 import "./Profile.css";
 import { useDocumentTitle } from "../../hooks/useDocumentTitle";
-import { WISHLIST_ACTIONS } from "../../utils/Actions";
+import { CART_ACTIONS, WISHLIST_ACTIONS } from "../../utils/Actions";
 
 export const Profile = () => {
   useDocumentTitle("Profile");
@@ -14,6 +14,7 @@ export const Profile = () => {
   } = useAuth();
 
   const { wishlistDispatch } = useWishlist();
+  const { cartDispatch } = useCart();
 
   const { firstName, lastName, email } = user;
   const navigate = useNavigate();
@@ -22,6 +23,7 @@ export const Profile = () => {
     navigate("/");
     setUserData({});
     wishlistDispatch({ type: WISHLIST_ACTIONS.CLEAR_WISHLIST });
+    cartDispatch({ type: CART_ACTIONS.CLEAR_CART });
     localStorage.removeItem("userData");
     toast.success("Successfully logged out!");
   };
