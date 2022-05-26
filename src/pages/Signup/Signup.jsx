@@ -1,8 +1,9 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { singupHandler } from "../../services";
 import { useDocumentTitle } from "../../hooks/useDocumentTitle";
+import { useAuth } from "../../context";
 
 const initialFormData = {
   firstName: "",
@@ -60,8 +61,13 @@ export const Signup = () => {
 
   const [formData, setFormData] = useState(initialFormData);
 
+  const { setUserData } = useAuth();
+
   const { password, confirmPassword } = formData;
   const navigate = useNavigate();
+
+  const location = useLocation();
+  const from = location?.state?.from?.pathname || "/";
 
   const inputChangeHandler = (e) => {
     setFormData((prevData) => ({
@@ -82,7 +88,15 @@ export const Signup = () => {
       <main className="main-center m-4">
         <form
           onSubmit={(e) =>
-            singupHandler({ e, password, confirmPassword, formData, navigate })
+            singupHandler({
+              e,
+              password,
+              confirmPassword,
+              formData,
+              navigate,
+              setUserData,
+              from,
+            })
           }
           className="authenticate-form p-5 radius-5 shadow"
         >

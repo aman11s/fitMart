@@ -1,0 +1,27 @@
+.single-product-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 5rem;
+}
+
+.product-card-img {
+  max-width: 20rem;
+}
+
+.product-title {
+  font-size: 1.3rem;
+}
+
+.product-price {
+  font-size: 1.1rem;
+}
+
+.des {
+  color: var(--dark-green-color);
+}
+
+.product-trump-img {
+  max-width: 25px;
+}

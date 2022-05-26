@@ -16,8 +16,10 @@ const loginHandler = async ({
       password,
     });
     if (status === 200) {
+      const userData = { token: data.encodedToken, user: data.foundUser };
       toast.success("Successfully logged in!");
-      setUserData({ token: data.encodedToken, user: data.foundUser });
+      setUserData(userData);
+      localStorage.setItem("userData", JSON.stringify(userData));
       navigate(from, { replace: true });
     }
   } catch (error) {
@@ -36,18 +38,21 @@ const singupHandler = async ({
   confirmPassword,
   formData,
   navigate,
+  setUserData,
+  from,
 }) => {
   e.preventDefault();
   if (password === confirmPassword) {
     try {
-      const { status } = await axios.post("/api/auth/signup", {
+      const { data, status } = await axios.post("/api/auth/signup", {
         ...formData,
       });
       if (status === 201) {
-        toast.success("New account created, login now");
-        setTimeout(() => {
-          navigate("/login");
-        }, 1000);
+        toast.success("Successfully Singed up!");
+        const userData = { token: data.encodedToken, user: data.createdUser };
+        setUserData(userData);
+        localStorage.setItem("userData", JSON.stringify(userData));
+        navigate(from, { replace: true });
       }
     } catch (e) {
       if (e.response.status === 422) {

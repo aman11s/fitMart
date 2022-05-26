@@ -16,3 +16,21 @@ button[disabled] {
 .main-min-height {
   min-height: calc(100vh - 15.4rem);
 }
+
+.fw-600 {
+  font-weight: 600;
+}
+
+.fw-700 {
+  font-weight: 700;
+}
+
+.fw-800 {
+  font-weight: 800;
+}
+
+.loader-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}

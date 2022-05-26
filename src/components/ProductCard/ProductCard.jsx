@@ -11,7 +11,7 @@ import { isAlreadyInCart, isAlreadyInWishlist } from "../../utils";
 import "./ProductCard.css";
 
 export const ProductCard = ({ product }) => {
-  const { title, ratings, price, imgSrc, imgAlt } = product;
+  const { _id, title, ratings, price, imgSrc, imgAlt } = product;
 
   const {
     userData: { token },
@@ -33,7 +33,6 @@ export const ProductCard = ({ product }) => {
   const navigate = useNavigate();
 
   const inWishlist = isAlreadyInWishlist(wishlist, product);
-
   const inCart = isAlreadyInCart(cart, product);
 
   return (
@@ -41,7 +40,12 @@ export const ProductCard = ({ product }) => {
       <div className="vertical-card auto-width">
         <div className="card-header">
           <div className="card-img-container">
-            <img className="card-img" src={imgSrc} alt={imgAlt} />
+            <img
+              onClick={() => navigate(`/products/${_id}`)}
+              className="card-img card-img-click"
+              src={imgSrc}
+              alt={imgAlt}
+            />
             <button
               onClick={() =>
                 inWishlist
