@@ -11,7 +11,7 @@ import { isAlreadyInCart, isAlreadyInWishlist } from "../../utils";
 import "./ProductCard.css";
 
 export const ProductCard = ({ product }) => {
-  const { _id, title, ratings, price, imgSrc, imgAlt } = product;
+  const { id, title, ratings, price, imgSrc, imgAlt } = product;
 
   const {
     userData: { token },
@@ -41,7 +41,7 @@ export const ProductCard = ({ product }) => {
         <div className="card-header">
           <div className="card-img-container">
             <img
-              onClick={() => navigate(`/products/${_id}`)}
+              onClick={() => navigate(`/products/${id}`)}
               className="card-img card-img-click"
               src={imgSrc}
               alt={imgAlt}

@@ -1,25 +1,49 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { SingleProductCard } from "../../components";
-import { useProducts } from "../../context";
+import { Loader, SingleProductCard } from "../../components";
+import { useDocumentTitle } from "../../hooks";
 import "./SingleProduct.css";
 
 export const SingleProduct = () => {
   const { productId } = useParams();
 
-  const {
-    state: { products },
-  } = useProducts();
+  const { setDocumentTitle } = useDocumentTitle("Products");
 
-  const getProduct = (product, id) => product.find(({ _id }) => _id === id);
+  const [singleProduct, setSingleProduct] = useState({});
+  const [pageLoader, setPageLoader] = useState(false);
 
-  const singleProduct = getProduct(products, productId);
+  useEffect(() => {
+    (async () => {
+      try {
+        setPageLoader(true);
+        const { data, status } = await axios({
+          method: "GET",
+          url: `/api/products/${productId}`,
+        });
+        if (status === 200) {
+          setDocumentTitle(data.product.title);
+          setSingleProduct(data.product);
+        }
+      } catch (e) {
+        console.error(e);
+      } finally {
+        setPageLoader(false);
+      }
+    })();
+  }, [productId, setDocumentTitle]);
 
-  return (
-    <>
-      <main className="single-product-main">
-        <SingleProductCard singleProduct={singleProduct} />
+  if (pageLoader) {
+    return (
+      <main className="main-min-height container-flex-justify-center">
+        <Loader />
       </main>
-    </>
+    );
+  }
+  return (
+    <main className="single-product-main">
+      {pageLoader && <Loader />}
+      <SingleProductCard singleProduct={singleProduct} />
+    </main>
   );
 };
