@@ -9,8 +9,8 @@ export const Hero = () => {
         <div className="overlay">
           <h1>GET FIT</h1>
           <p>Your one stop fitness solution</p>
-          <Link to="/products" className="pt-1">
-            <button className="btn cta-btn primary-solid-btn">Shop now</button>
+          <Link to="/products" className="pt-1 btn cta-btn primary-solid-btn">
+            Shop now
           </Link>
         </div>
         <img
